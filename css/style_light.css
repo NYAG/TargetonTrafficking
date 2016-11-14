@@ -1,0 +1,959 @@
+/* Common breakpoints:
+https://responsivedesign.is/develop/browser-feature-support/media-queries-for-common-device-breakpoints*/
+
+/* macbook 13 inch pixel resolution: 1280 x 800 *, but once you bring in menus, etc, it's more like 1280 x 725
+ * horizontal ipad pixel resolution: 1024 x 768 *
+ *iPhone 6 pixel resolution: 375 x 667 */
+
+    @media screen and (min-width: 0px) and (max-width: 650px) {
+      .mobile-clear {
+        margin-top: 15%;
+      }
+      .map_text {
+        margin-top: 25%;
+      }
+    }
+
+    @media (min-height: 600px;) and (max-height: 860px) {
+      #target_buttons {
+        padding-top: 0px;
+        padding-bottom: 40px;
+      }
+      #button_container {
+        padding-top: 0px;
+      }
+      #target_container {
+        margin-top: 0px;
+      }
+      #click-anywhere {
+        padding-top: 10px;
+      }
+      .svg-container {
+        margin-bottom: -48%
+      }
+      .svg-content-responsive {
+        max-height: 500px;
+      }
+
+      .svg-container-diverging-bar {
+        margin-bottom: -50%;
+      }
+      .svg-content-responsive-diverging-bar {
+        max-height: 350px;
+      }
+    }
+
+/* WIDTH-BASED MEDIA QUERIES */
+    @media screen and (min-width: 0px) and (max-width: 800px) {
+      .mobile-hide {
+        display: none;
+        padding: 0px;
+      }
+      .mobile-show {
+        display: inline;
+      }
+
+      .mobile-title-scale {
+        font-size: 24px;
+        margin-bottom: 0px;
+      }
+      .mobile-shift-up {
+        padding-top: 0px;
+      }
+      .container {
+        padding: 50px 40px;
+      }
+      .subsection_divider {
+        padding-top: 0px;
+        margin-bottom: 10px;
+      }
+      
+      #barall-container {
+        padding-left: 2%
+      }
+
+      #target_container {
+        margin: 0px 0px 0px 0px;
+        padding-top: 0px;
+        min-height: 380px;
+      }
+      #target_buttons {
+        padding-bottom: 40px;
+      }
+
+      #blockmap_text {
+        margin-top: 25%;
+      }
+
+      .viz_box div.row {
+        padding-left: 0px;
+      }
+
+      #highTTChandguns_opt {
+        padding-left: 0px;
+      }
+      #highTTChandguns_button {
+        padding: 0px 6px;
+      }
+
+      .sectiondivider {
+        margin-bottom: 0px;
+        height: 250px;
+        background: #333;
+        color: #fff;
+        width: 100%;
+        padding-left: 0px;
+      }
+      .sectiondivider h1 {
+        color: #fff;
+        font-size: 40px;
+        padding-top: 75px; /* container height divided by two minus font-size */
+        width:100%;
+        text-align: center;
+      }
+      #click-anywhere {
+        font-size: 24px;
+        padding: 20px 10px 0px 10px;
+        margin: 0px;
+      }
+    }
+
+    @media (min-width: 801px) and (max-width: 1150px) {
+      .container {
+        padding: 90px 40px;
+      }
+      .mobile-show {
+        display: none;
+      }
+      .mobile-title-scale {
+        font-size: 30px;
+        margin-top: 20px;
+      }
+
+      #target_head {
+        min-height: 160px;
+        margin-bottom: -30px;
+        padding-top: 0px;
+      }
+      
+      #target_container {
+        margin: 30px 0px 0px 0px;
+        padding-top: 0px;
+        min-height: 390px;
+      }
+
+      #recoverymap_text {
+        min-height: 350px;
+        margin-bottom: 0px;
+      }
+      #recoverymap_text p {
+        margin-bottom: 0px;
+      }
+
+      #divergingbar_text {
+        min-height: 215px;
+        margin-bottom: 0px;
+      }
+      #divergingbar_text p {
+        margin-bottom: 0px;
+      }
+      #barall-container {
+        padding-left: 7%
+      }
+
+      #blockmap_text {
+        min-height: 135px;
+        margin-bottom: 0px;
+      }
+      #blockmap_text p {
+        margin-bottom: 0px;
+      }
+
+      #exportstates_text {
+        min-height: 245px;
+        margin-bottom: 0px;
+      }
+      #exportstates_text p {
+        margin-bottom: 0px;
+      }
+
+      .sectiondivider {
+        margin-bottom: 0px;
+        height: 400px;
+        background: #333;
+        color: #fff;
+        width: 100%;
+        padding-left: 0px;
+      }
+      .sectiondivider h1 {
+        color: #fff;
+        font-size: 50px;
+        padding-top: 150px; /* container height divided by two minus font-size */
+        width:100%;
+        text-align: center;
+      }
+      #click-anywhere {
+        font-size: 24px;
+        padding: 20px 10px 0px 10px;
+        margin: 0px;
+      }
+    }
+
+    @media (min-width: 1151px) {
+      .mobile-show {
+        display: none;
+      }
+      .container {
+        padding: 90px 40px;
+      }
+      .subsection_divider {
+        padding-top: 20px;
+        margin-bottom: 75px;
+      }
+      .mobile_title_scale {
+        margin-top: 20px;
+        font-size: 32px;
+      }
+      #target_container {
+        margin: -10px 0px 0px 0px;
+        padding-top: 0px;
+        min-height: 542px;
+        overflow: hidden;
+      }
+      #target_buttons {
+        padding-bottom: 40px;
+      }
+      #button_container {
+        padding-top: 0px;
+      }
+      #click-anywhere {
+        font-size: 24px;
+        padding: 10px 10px 0px 10px;
+        margin: 0px;
+      }
+
+      #recoverymap_text {
+        min-height: 250px;
+        margin-bottom: 0px;
+      }
+      #divergingbar_text {
+        min-height: 190px;
+        margin-bottom: 0px;
+      }
+      #barall-container {
+        padding-left: 7%
+      }
+      #blockmap_text {
+        min-height: 115px;
+        margin-bottom: 0px;
+      }
+      #exportstates_text {
+        min-height: 215px;
+        margin-bottom: 0px;
+      }
+      .dynamic_text {
+        margin-bottom: 0px;
+      }
+ 
+      .sectiondivider {
+        margin-bottom: 0px;
+        height: 400px;
+        background: #333;
+        color: #fff;
+        width: 100%;
+        padding-left: 0px;
+      }
+      .sectiondivider h1 {
+        color: #fff;
+        font-size: 50px;
+        padding-top: 150px; /* container height divided by two minus font-size */
+        width:100%;
+        text-align: center;
+      }
+
+    }
+/* HEIGHT-BASED MEDIA QUERIES */
+
+    @media (min-height: 861px) and (max-height: 1240px) {
+      #target_container {
+        margin-top: 158px;
+        margin-bottom: 0px;
+      }
+      #target_buttons {
+        padding-top: 70px;
+        padding-bottom: 150px;
+      }
+      #click-anywhere {
+        padding-top: 20px;
+      }
+      .svg-container {
+        margin-bottom: -30%
+      }
+      .svg-content-responsive {
+        max-height: 600px;
+      }
+
+      .svg-container-diverging-bar {
+        margin-bottom: -40%;
+      }
+      .svg-content-responsive-diverging-bar {
+        max-height: 600px;
+      }
+
+
+    }
+
+    @media (min-height: 1241px) {
+      #target_container {
+        margin-top: 295px;
+        margin-bottom: 50px;
+        padding-top: 200px;
+      }
+      .svg-container {
+        margin-bottom: -30%
+      }
+      .svg-content-responsive {
+        max-height: 600px;
+      }
+      .svg-container-diverging-bar {
+        margin-bottom: -40%;
+      }
+      .svg-content-responsive-diverging-bar {
+        max-height: 600px;
+      }
+      .mobile-title-scale {
+        font-size: 36px;
+        margin-bottom: 40px;
+      }
+      #target_buttons {
+        padding-top: 200px;
+        padding-bottom: 300px;
+      }
+    }
+
+/* STANDARD DOM ELEMENTS */
+    body {
+      background: #eee;
+      color:#333;
+      font-size: 17px;
+      font-family: "Titillium Web", Tahoma, Arial, sans-serif;
+    }
+
+    div {
+        margin-bottom: 20px;
+        padding: 10px 0px 0px 10px;
+    }
+
+    h1, h2, h3, h4 {
+      color: #de2d26;
+    }
+
+    h1 {
+        font-size: 40px;
+        padding: 0px 0px 10px 0px;
+    }
+
+
+    h2 {
+        font-size: 36px;
+        padding: 0px 0px 10px 0px;
+        margin: 0px;
+    }
+
+    h3 {
+      font-size: 22px;
+      padding: 0px;
+    }
+
+    h4 {
+      font-size: 22px;
+      padding: 0px;
+    }
+
+    p {
+        font-family: "Georgia", Times, serif;
+    }
+
+    img {
+      display: block;
+      max-width: 100%
+    }
+
+    a {
+      color: #de2d26;
+      text-decoration: none;
+    }
+
+    a:hover{
+      color: #fb6a4a;
+    }
+
+    ul {
+      padding-left: 30px;
+    }
+
+    li {
+      font-family: "Georgia", Times, serif;
+      font-size: 16px;
+    }
+
+      /* pulled from http://tinyurl.com/jj4ykvt
+    this is the line separtors between subsections of the report.*/
+    hr {
+       display: block;
+       position: relative;
+       padding: 0;
+       margin: 8px auto;
+       height: 0;
+       width: 100%;
+       max-height: 0;
+       font-size: 0.5px;
+       line-height: 0;
+       clear: both;
+       border: none;
+       border-top: 0.5px solid #aaaaaa;
+       border-bottom: 0.5px solid #333;
+    }
+
+    .tableauPlaceholder {
+      padding: 0px;
+      position: relative;
+    }
+
+    .tableauContainer {
+      background: #333; 
+      margin: auto; 
+      padding: 0px; 
+      max-width: 1280px;
+      width: 100%
+    }
+
+/* REPORT LAYOUT STRUCTURE */
+    .container {
+      background: #fff;
+      max-width: 1024px;
+    }
+
+    .thetooldiv {
+      padding: 0px;
+      margin: 0px;
+      background: #333;
+      width: 100%;
+    }
+
+    .viz_box {
+      border: 1px #bbb solid; 
+      border-radius: 4px;
+    }
+
+    .viz_box div.row {
+      padding-right: 10px;
+    }
+
+    .shareicon {
+      max-height: 30px; 
+      max-width: 30px;
+    }
+
+    .icon-container {
+      width: 35px; 
+      height: 35px;
+      border: 1px solid #eee; 
+      border-radius:4px;
+      margin-top: 2px;
+      margin-bottom: 10px;
+    }
+
+    .icon-container:hover {
+      border: 2px solid #de2d26;
+      border-radius:4px;
+    }
+
+/* SPECIAL KINDS OF TEXT */
+
+  #creds {
+    font-family: "Titillium Web", Tahoma, Arial, sans-serif;
+    font-size: 17px;
+    padding-top: 32%;
+  }
+
+  .bignumbers {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    padding-bottom: 0px;
+    text-align: center;
+    font-family: "Titillium Web", Tahoma, Arial, sans-serif;
+  }
+
+  .bignumber_container {
+    margin-bottom: 0px;
+  }
+
+  .bignumbers h2 {
+    font-size: 22px;
+  }
+
+  .big_bignumbers h1 {
+    font-size: 70px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    padding-bottom: 0px;
+    text-align: center;
+  }
+
+  .big_bignumbers h2 {
+    font-size: 30px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    padding-bottom: 0px;
+    text-align: center;
+  }
+
+  .callouts {
+    border-top: 1px #bbb solid; 
+    border-bottom: 1px #bbb solid; 
+    margin-top: 10px;
+    margin-bottom: 40px;
+  }
+
+  .callouts h2 {
+    line-height: 1.8;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .callouts h3 {
+    line-height: 1.8;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .callouts p {
+    font-family: "Titillium Web", Tahoma,  Arial, sans-serif;
+    margin-bottom: 5px;
+  }
+
+  .callouts_container {
+    margin-bottom: 0px;
+    padding: 0px;
+  }
+
+  #dynamicdivergingbar {
+    overflow: initial;
+  }
+
+  #barall-container {
+    padding-right: 7%;
+  }
+
+  #blockmap-container {
+    padding-left: 7%;
+    padding-right: 7%;
+  }
+
+  #footnotes {
+    margin-left: 20px;
+  }
+
+  .map_stats {
+    padding-top: 0px;
+  }
+
+  .map_stats h3 {
+    margin-bottom: 15px;
+    padding-bottom: 0px;
+    font-size: 30px;
+  }
+
+  .map_stats p {
+    margin-bottom: 0px;
+    font-family: "Titillium Web", Tahoma,  Arial, sans-serif;
+  }
+
+  .map_text {
+    margin-bottom: 0px;
+  }
+
+  /* dynamic text for blockmap */
+  #dynamicblockmap {
+    overflow: initial;
+  }
+
+  /* dynamic text for recovery dotmap */
+  #dyntext {
+    overflow: initial;
+  }
+
+  .dynamic_text {
+    padding-right: 10px;
+    font-family: "Titillium Web", Tahoma, Arial, sans-serif;
+  }
+
+/* CROSS-BROWSER COMPATIBILITY SVG FIXES */
+    .scaling-svg {
+       position: absolute; 
+       width: 100%; 
+       padding-top: 20px;
+       left: 0; 
+       top: 0;
+      }
+
+    /*via: http://stackoverflow.com/questions/16265123/resize-svg-when-window-is-resized-in-d3-js  */
+    .svg-container-recoverymap {
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      /* 51% here because padding was overlapping diverging bar toggle buttons */
+      padding-bottom: 40%;  /* aspect ratio */ 
+      vertical-align: top;
+      /*overflow: hidden;*/
+      margin-bottom: 0px;
+    }
+
+    .svg-container {
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      padding-bottom: 100%;  /* aspect ratio */
+      vertical-align: top;
+      overflow: visible;
+      margin-bottom: -25%;
+    }
+
+    .svg-container-diverging-bar {
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      padding-bottom: 100%;  /* aspect ratio */
+      vertical-align: top;
+      overflow: visible;
+      margin-bottom: -38%;
+    }
+
+    .svg-content-responsive {
+      display: inline-block;
+      position: absolute;
+      /*max-height: 600px;*/
+      top: 10px;
+      left: 0;
+    }
+
+    .svg-content-responsive-diverging-bar {
+      display: inline-block;
+      position: absolute;
+      top: 10px;
+      left: 0;
+    }
+
+    .svg-content-responsive-icons {
+      display: inline-block;
+      position: absolute;
+      max-height: 70px;
+      top: 10px;
+      left: 0;
+      padding-right: 25%;
+    }
+
+    .svg-container-guntrace {
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      padding-bottom: 50%;  /* aspect ratio */
+      vertical-align: top;
+      overflow: hidden;
+      margin-bottom: -33%;
+    }
+
+    .guntrace_vertical div {
+      padding-left: 0px;
+    }
+
+    .guntrace_vertical img {
+      width: 100%; 
+      margin-top: -100px; 
+      max-height: 1200px;
+    }
+
+/* BUTTONS */
+
+    .button, button,
+    input[type='button'] {
+      color: #333;
+      padding: 0 20px;
+    }
+
+    .button:hover,
+    button:hover,
+    input[type="button"]:hover {
+      color: #555;
+    }
+
+    .button:focus,
+    button:focus, 
+    input[type="button"]:focus {
+      color: #222
+      background: #aaa;
+      background-color: #aaa;
+    }
+
+    button[disabled] {
+        color: lightgray;
+        border-color: lightgray;
+    }
+
+    .nextpage_top_button {
+      background: inherit;
+      font-size: 15px;
+      text-transform: uppercase;
+      color: inherit;
+      font-weight: normal;
+      text-transform: none;
+      float: left;
+      clear: right;
+      border: none;
+      width: auto;
+      padding: 0px 5px 0px 5px;
+    }
+
+    input[type="button"].toggle_buttons{
+      padding: 0px 15px;
+    }
+
+    .toggle_buttons {
+      float:left; 
+      clear:right; 
+      margin-bottom: 0px; 
+      color:#333;
+      padding-left: 7px;
+    }
+
+    input[type="button"].introtoggles {
+      height: 35px;
+      padding: 0 15px;
+      color: #000;
+      line-height: 35px;
+      border-radius: 4px;
+      border: 1px solid #bbb;
+    }
+
+    .introtoggles {
+      height: 35px;
+      padding: 0 15px;
+      color: #000;
+      line-height: 35px;
+      border-radius: 4px;
+      border: 1px solid #bbb;
+    }
+
+/* SCROLLER */
+
+    .section_selectors {
+      height: 0px;
+      line-height: 0px;
+      font-size: 0px;
+      padding: 0px;
+      margin: 0px;
+    }
+
+    #scroller  {
+      width: 100%; 
+      margin-bottom: 0px;
+      height: 50px;
+      background: #333;
+      z-index: 100;
+    }
+
+    #scroller div {
+      margin: 0px 0px 0px 10px;
+      padding: 0px;
+    }
+
+    .scrollcontainer {
+      color: inherit;
+      font-size: 14px;
+      width: auto;
+      float: left;
+      clear: right;
+    }
+
+    .scrollimage {
+      height: 45px;
+      max-width: 45px; 
+      margin-top: -5px;
+      margin-right: 20px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+
+    #scroller.graph-scroll-fixed {
+      position: fixed;
+      top: 0px;
+      margin: 0px 0px 50px 0px;
+      overflow: hidden;
+    }
+
+    #scroller.graph-scroll-below {
+      position: fixed;
+      top: 0px;
+      margin: 0px;
+      overflow: hidden;
+    }
+
+/* TOOLTIP */
+
+    .d3-tip {
+      font-family: "Titillium Web", Helvetica, sans-serif;
+      background: #fff;
+      padding: 3px;
+      border: .5px solid #bdbdbd;
+      color:#000;
+      /*to change opacity, you have to go into the library source code js/utils/d3-tip.js*/
+    }
+
+/* MAPS */
+
+    .feature_overlay {
+      fill: #333;
+    }
+
+    .feature {
+      cursor: pointer;
+      pointer-events: all;
+    }
+
+    .mesh {
+      fill: none;
+      stroke: #333;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1.5px;
+    }
+
+    .export_states_background {
+      fill: none;
+    }
+
+    .export_states_mesh {
+      fill: none;
+      stroke: #fff;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .export_states_feature {
+      cursor: pointer;
+      pointer-events: all;
+    }
+
+    .legend, .legendSize, .legendOrdinal {
+      fill: #333;
+      color: #333;
+      font-size: 12px;
+    }
+
+/* TARGET THINGS */
+
+    #target_buttons {
+      margin-top: 0px;
+    }
+
+    #target_container {
+      cursor: pointer;
+    }
+
+    #target_row {
+        overflow: hidden;
+        margin: 0px;
+        padding: 0px;
+    }
+
+/* IN-STATE OUT-OF-STATE DIVERGING BAR CHART*/
+
+  .baraxis path,
+  .baraxis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+
+  .baraxis text {
+    padding-top: 20px;
+  }
+
+  .bartext {
+    font-size: 14px;
+
+  }
+
+  #barall svg {
+    padding-top: 10%;
+    overflow: visible;
+  }
+
+  #barall h4 {
+    margin-bottom: -20px;
+    color: #000;
+  }
+
+/* NVD3 Stuff */
+
+  #TTC_bar_chart, #TTC_bar_chart svg {
+    height: 300px;
+    width: 100%;
+    padding: 0px 0px 30px 10px;
+    margin-top: 30px;
+  }
+
+  .tick {
+    font-size: 12px;
+    color: #333;
+    fill: #333;
+  }
+
+  .nvtooltip {
+    position: absolute;
+    font-size: 16px;
+  }
+
+  .nvtooltip h3, .nvtooltip p .nvtooltip hr {
+    margin: 10 10 10 0;
+    padding: 0px;
+  }
+
+  .nv-axisMaxMin {
+    fill: #333;
+    font-size: 12px;
+  }
+
+  .discreteBar {
+    fill: #de2d26;
+    fill-opacity: 1;
+    stroke: none;
+  }
+
+  .nv-bar.positive {
+    fill: #de2d26;
+    fill-opacity: 1;
+  }
+  
+  .nv-group, .nv-series-0 {
+    fill-opacity: 1;
+  }
+
+  .nv-axislabel {
+    font-size: 16px;
+  }
+
+/* Pull-stat container styling*/
+
+  .pullstatdiv {
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .pullstattext {
+    margin-bottom: 5px;
+  }
+
+
+

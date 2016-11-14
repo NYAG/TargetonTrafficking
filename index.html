@@ -1,0 +1,2737 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ==== PAGE SETUP ==== -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Target on Trafficking</title>
+      <meta name="description" content="Target on Trafficking">
+
+    <!-- ==== FONT ==== -->
+      <link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+
+    <!-- ==== CSS ==== -->
+      <link rel="stylesheet" href="css/normalize.css">
+      <link rel="stylesheet" href="css/skeleton.css">
+      <link rel="stylesheet" href="css/style_light.css">
+  </head>
+
+  <body>
+    <!-- SECTION SCROLLER -->
+    <div id='scroller' class="mobile-hide">
+      <div class="row" style="width: 100%;">
+        <div class='one column'>
+          <a href="#toppart">
+            <img src="images/AG_Seal-CMYK-Vector-grayscale.png" alt="Seal of the Attorney General of New York" class="scrollimage" />
+          </a>
+        </div>
+        <div class="eleven columns">
+            <div style="width:0px; padding:0px; margin:0px; height: 0px;">
+              <a href='#' class="nextpage_top_button" style="width: 0px; padding:0px; margin:0px; height: 0px;"></a>
+            </div>
+            <div class='scrollcontainer'>
+                <a href="#part1" class="button nextpage_top_button">
+                  Background
+                </a>
+            </div>
+            <div class='scrollcontainer'>
+                <a href="#part2" class="button nextpage_top_button">
+                  Trafficking Patterns
+                </a>
+            </div>
+            <div class='scrollcontainer'>
+                <a href="#part3" class="button nextpage_top_button">
+                  Recommendations
+                </a>
+            </div>
+            <div class='scrollcontainer'>
+                <a href="#tool" class="button nextpage_top_button">
+                  Tracing Analytics Platform
+                </a>
+            </div>
+            <div class='scrollcontainer'>
+                <a href="#methodologypart" class="button nextpage_top_button">
+                  Methodology
+                </a>
+            </div>
+            <div class="icon-container u-pull-right" style="margin-top: 2px;">
+              <a href="trafficking-report.pdf">
+                <img src="images/printer.svg" class="shareicon" style="margin-top: 4px; margin-left: 2px; max-height: 27px;" alt="Print to PDF">
+              </a>
+            </div>
+            <div class="icon-container u-pull-right" style="margin-top: 2px;">
+              <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20%23report%20on%20%23NY%20%23gun%20%23trafficking%20%23gunsafety%20from%20@AGSchneiderman%20&url=http://bit.ly/crimeguns">
+                <img src="images/Twitter_bird_logo_2012.svg" class="shareicon" style="padding-top: 5px; padding-left: 3px;" alt="Share on Twitter">
+              </a>
+            </div>
+            <div class="icon-container u-pull-right" style="margin-top: 2px;">
+              <a href="https://www.facebook.com/sharer.php?u=http://bit.ly/crimeguns">
+                <img src="images/F_icon.svg" class="shareicon" alt="Share on Facebook">
+              </a>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- OPEN OF CONTAINER -->
+    <div class='container' id='toppart'>
+      <!-- HEADER -->
+      <div class="section_selectors"></div><!-- dummy so "Background" nav doesn't light up -->
+      <!-- ======= LANDING VIZ ======= -->
+          <div class="row" id="target_container">
+            <div class="row" id="target_row">
+              <img src="images/TitlePage_Guns_1024.png" alt="Target on Trafficking: New York Crime Gun Analysis. New York Attorney General Eric T. Schneiderman" />
+              <h1 id="click-anywhere">
+                Click anywhere to advance
+              </h1>
+            </div>
+            <!-- thanks to the brittle transformations in the d3, this CSS has to stay in-line -->
+            <div class="row" id='target' style="text-align: center; margin: 0px; padding: 0px;">
+                <h1 style="font-size: 0px; padding:0px; margin: 0px;">
+                  <span style="opacity: 0;" id="startreport"><a href="#part1">Read the Report</a></span> <span style="opacity: 0; color: #000;" id="or">or</span> <span style="opacity: 0;" id="seedata"><a href="#tool">Explore the Data</a></span>
+                </h1>
+            </div>
+          </div>
+
+        <!-- BUTTONS FOR CHOOSING MAP SECTION AFTER ANIMATION -->
+          <div class="row" id="button_container">
+            <div id='target_buttons' class="row">
+              <button class="prev-slide introtoggles" disabled ga-on="click" ga-event-category="Overview Slideshow" ga-event-action="Prev">Previous</button>
+              <button class="next-slide introtoggles" ga-on="click" ga-event-category="Overview Slideshow" ga-event-action="Next">Next</button>
+              <button class="introtoggles button" onclick="start_over()" ga-on="click" ga-event-category="Overview Slideshow" ga-event-action="Start Over">Start Over</button>
+              <a href='#part1' class="introtoggles button" ga-on="click" ga-event-category="Overview Slideshow" ga-event-action="Go to the Report">Go to the Report</a>
+            </div>
+          </div>
+
+        <!-- SEAL AND BRANDING -->
+          <div class="row">
+            <div class="eight columns">
+              <p id="creds">
+                This report was prepared by the Office of the Attorney General of the State of New York’s Senior Advisor and Special Counsel Nicholas Suplina, Director of Research &amp; Analytics Lacey Keller, and Data Scientist Meredith McCarron. Special thanks to the Research &amp; Analytics Department and the Organized Crime Task Force (OCTF) for their assistance preparing the report. 
+              </p>
+            </div>
+          </div>
+    <!-- closing container to have full-width section divider -->
+    </div>
+
+
+    <!-- ===== SECTION DIVIDER ======== -->
+        <div class="section_selectors"></div>
+        <div class='sectiondivider' id='part1'>
+          <h1 class="mobile-title-scale">
+            Background
+          </h1>
+        </div>
+
+    <!-- SECTION CONTENT: GUN LAW BACKGROUND -->
+      <div class='container'>
+        <!-- THIS REPORT -->
+          <div class="row">
+            <p>
+              There are about 11,000 homicides by gun in America annually,<sup><a href="#homicideFN" id="homicideTXT">[1]</a></sup> and each represents a multifold tragedy: a life-lost, a family destroyed, a community scarred. Beyond the yellow-tape of the crime scene, the bereaved ask "Who did this?" For those committed to stopping gun violence, the next question must be: “Where did they get the gun?” This report begins to provide an answer for guns recovered in New York.
+            </p>
+            <div class="row callouts_container">
+              <div class="eight columns callouts_container">
+                <p>
+                  The New York State Office of the Attorney General (NYAG) is committed to preventing gun violence across New York State. It does so through its statewide gun buyback programs, defense and enforcement of New York’s gun safety laws, and aggressive disruption of violent gangs and gun trafficking rings by its Organized Crime Task Force (OCTF), which has recovered hundreds of crime guns in recent years.<sup><a href="#octfTakedownFN" id="octfTakedownTXT">[2]</a></sup>
+                </p>
+              </div>
+              <div class="four columns callouts">
+                <h3>
+                  Crime Gun
+                </h3>
+                <p>
+                  Any gun connected to a crime that is recovered by law enforcement.
+                </p>
+              </div>
+            </div>
+            <p>
+              A “crime gun” is any gun connected to a crime that is recovered by law enforcement. The Bureau of Alcohol, Tobacco, Firearms, and Explosives (ATF) can “trace” these guns which, when successful, can begin to answer the question of “where did they get the gun?” While review of a single trace may reveal data that help solve a crime, comprehensive analysis of trace data can detect regional patterns of crime gun movement into and within a state. These patterns can be used to create sound policies and targeted interdiction strategies aimed at combatting trafficking of dangerous firearms.
+            </p>
+            <p>
+              The NYAG created this first-of-its-kind report and interactive Tracing Analytics Platform to better understand gun trafficking patterns and to assess the efficacy of laws in combatting illegal guns in New York State. The Platform further allows local law enforcement to reach their own conclusions about how to address crime guns in their area.
+            </p>
+            <p>
+              While federal appropriations riders known as the Tiahrt Amendments dramatically restrict ATF’s ability to use and distribute trace data, ATF can share such information with local law enforcement and prosecutors. Like ATF, these groups can publish aggregate statistical data regarding firearms trafficking patterns.<sup><a href="#TiahrtIntroFN" id='TiahrtIntroTXT'>[3]</a></sup>
+            </p>
+            <p>
+              By collecting and analyzing New York aggregate gun trace data for 2010-2015, NYAG identified regional differences in trafficking patterns while discovering a commonality among crime guns recovered across New York State: New York’s gun laws have curbed access to the guns most associated with violent crimes, handguns. But the ready availability of these guns in states without these protections thwarts New York’s effort to keep its citizens safe. Our analysis has led us to several recommendations, including calling on the federal government to close the so-called “gun show loophole” which allows private sales of firearms without a background check, and urging states to require permits for handguns, which has worked effectively in New York to keep these dangerous guns out of the hands of criminals.
+            </p>
+          </div>
+
+        <!-- subsection divider line -->
+          <div class='row subsection_divider'>
+            <div class='one-third column offset-by-one-third column'>
+              <hr />
+            </div>
+          </div>
+
+        <!-- GUN LAWS -->
+          <div class="row" >
+            <h2>
+              Gun Safety is a State's Right
+            </h2>
+          </div>
+          <div class="row">
+            <p>
+              The Gun Control Act of 1968 has two primary goals: to keep guns out of the hands of criminals and others who should not have them, and to assist law enforcement in investigating gun-related crimes.<sup><a href='#GunControlLawsFN' id='GunControlLawsTXT'>[4]</a></sup> The focus of the Act is the regulation of federally licensed firearms dealers (also known as federal firearms licensees or “FFLs”).<sup><a href='#fflFN' id='fflTXT'>[5]</a></sup> Under the Act, to maintain a license to commercially sell firearms, FFLs must obey both federal <em>and</em> state restrictions.<sup><a href='#federalstateFN' id='federalstateTXT'>[6]</a></sup> On the federal side, FFLs cannot sell firearms to certain prohibited persons, (e.g., felons, fugitives, drug users),<sup><a href='#ProhibitedPersonsFN' id='ProhibitedPersonsTXT'>[7]</a></sup> must have the purchaser of a firearm complete disclosures on a federal form,<sup><a href="#disclosuresFN" id="disclosuresTXT">[8]</a></sup> and must perform a background check on the person who is purchasing the weapon.<sup><a href="#federalBGCheckFN" id="federalBGCheckTXT">[9]</a></sup>
+            </p>
+            <div class="row callouts_container">
+              <div class="eight columns callouts_container">
+                <p>
+                  FFLs must not only abide by the laws of the state in which they operate, but they must also conduct their business in a manner that respects other states’ gun laws. For instance, an FFL cannot ship a firearm to a private person in another state, nor can they sell a gun to a person known to reside in another state, if doing so violates that state’s law.<sup><a href='#interstatesalesFN' id='interstatesalesTXT'>[10]</a></sup> Through these requirements, the federal statute both creates a baseline level of protection against guns getting into the wrong hands, while simultaneously preserving every state’s right to advance its own stronger gun policies.<sup><a href="#ATFreport2000FN" id='ATFreport2000TXT'>[11]</a></sup>
+                </p>
+              </div>
+              <div class="four columns callouts">
+                <h3>
+                  New York exercises its right to regulate firearms with some of the strongest gun safety laws in the country.
+                </h3>
+              </div>
+            </div>
+            <p>
+              New York asserts this right with some of the strongest gun safety laws in the country. For instance, in an effort to address the carnage associated with mass shootings, New York recently banned assault weapons, prohibited the sale of high capacity magazines, and created a system for preventing people with dangerous mental infirmities from obtaining a gun.<sup><a href="#SAFEActFN" id="SAFEActTXT">[12]</a></sup> So that criminals or other prohibited persons cannot obtain firearms in non-FFL transactions, the State requires universal background checks, including at gun shows and in private sales.<sup><a href="#gunshowFN" id="gunshowTXT">[13]</a></sup> To prevent criminals from gaining ready access to handguns &mdash; the firearm most often employed in homicides and violent gun crimes<sup><a href="#guncrimesFN" id="guncrimesTXT">[14]</a></sup> &mdash; New York prohibits purchase or ownership of a handgun without first applying for and receiving a license, a comprehensive process that requires fingerprinting, photos, background check, and character references.<sup><a href="#bgcheckrulesFN" id="bgcheckrulesTXT">[15]</a></sup> All licenses and associated handguns are recorded in a New York database and licenses must be periodically renewed or recertified.<sup><a href="#hglicensesFN" id="hglicensesTXT">[16]</a></sup> Finally, as part of its gun trafficking interdiction efforts, New York requires state or local law enforcement agencies to request firearm traces through ATF for every recovered firearm with an unknown source.<sup><a href="#traceRequirementFN" id="traceRequirementTXT">[17]</a></sup>
+            </p>
+          </div>
+
+        <!-- subsection divider line -->
+          <div class='row subsection_divider'>
+            <div class='one-third column offset-by-one-third column'>
+              <hr />
+            </div>
+          </div>
+
+        <!-- GUN TRACING -->
+          <div class="row" >
+            <h2>
+              Federal Firearms Tracing is Imperfect but Invaluable
+            </h2>
+          </div>
+          <div class="row">
+
+            <div class="row callouts_container">
+              <div class="eight columns callouts_container">
+                <p>
+                  Though virtually all guns in the United States begin as legal firearms, when recovered by law enforcement in connection with a crime, they become known as “crime guns.” To assist law enforcement in solving and understanding gun-related crimes, the Gun Control Act of 1968 authorized ATF to administer firearms tracing of crime guns.<sup><a href="#tracingmandateFN" id="tracingmandateTXT">[18]</a></sup> Federal law currently prohibits the creation of a comprehensive central database of firearms or firearms purchasers that law enforcement could access when recovering a crime gun.<sup><a href="#nodatabaseFN" id="nodatabaseTXT">[19]</a></sup> Therefore, to trace a single firearm, ATF must manually recreate the history of the gun from its manufacture to its last known retail sale. If the chain of information is broken at any step of the process (due to records being lost, discarded, destroyed, or never created), the recovering agency will not receive complete trace information.
+                </p>
+              </div>
+              <div class="four columns callouts">
+                <h3>
+                  There is no national database of guns in the U.S.
+                </h3>
+              </div>
+            </div>
+            <p>
+              To initiate a trace, ATF collects the make, model, and serial number of the gun from the recovering law enforcement agency. Next, ATF contacts the manufacturer to try to determine to which wholesaler the gun was first sold. If that data is available, ATF then contacts the wholesaler to determine to which dealer (FFL) the gun was sold. If that data is available, ATF then contacts the dealer (FFL) to collect records of who purchased the gun, where, and when. And if that data is available, ATF returns a completed “trace” of the firearm to the recovering agency with as much data as it was able to obtain through the trace process. Importantly, these traces do not capture any unrecorded, private sales associated with a firearm &mdash; sometimes called “gray market” sales.
+            </p>
+          </div>
+
+          <div class="row">
+            <div class="row svg-container-guntrace mobile-hide">
+              <img src='images/New_GunTransfer_PaleBG.svg' class='scaling-svg mobile-hide' alt="The Gun Trace Process" />
+            </div>
+            <div class="row mobile-show guntrace_vertical">
+              <div class="two columns"></div>
+              <div class="eight columns">
+                <img src='images/FFL_Transfer_Vert.svg' alt="The Gun Trace Process" />
+              </div>
+              <div class="two columns"></div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <p>
+              The tracing process is time-consuming and prone to failure. Many of the records sought are lost, destroyed, incomplete, or otherwise missing. For instance, of the 52,915 New York State trace records covered by this report, ATF was unable to obtain any state of origin for 12% of traces and a date of retail purchase for approximately 42% of traces. Following the methodology of ATF, the percentages of out-of-state, low time-to-crime, and trafficked guns are calculated using only the guns where the respective attribute(s) are known.
+            </p>
+            <div class="row callouts_container">
+              <div class="eight columns callouts_container">
+                <p>
+                  Notwithstanding its limitations, trace data can be crucial to understanding when and how a gun was diverted from a legal firearm to a crime gun.  A “diverted” firearm is one that has moved from the legal to the illegal marketplace through an illegal method or for an illegal purpose. Gun traffickers trade in diverted firearms and obtain them in a variety of ways: from corrupt FFLs or FFL-employees who sell off-the-books or without required background checks and paperwork; thieves who steal from FFLs or private owners; or straw purchasers – those who buy a gun, complete required paperwork, and undergo a background check on behalf of another, prohibited, person.<sup><a href="#diverted-traffickedFN" id='diverted-traffickedTXT'>[20]</a></sup>
+                </p>
+              </div>
+              <div class="four columns callouts">
+                <h3>
+                  Trace data can help detect the sources of firearms trafficking.
+                </h3>
+              </div>
+            </div>
+            <p>
+             When it is available, comprehensive trace data can help detect the sources of firearms, track the intrastate and interstate movement of crime guns, and ultimately inform how law enforcement deploys resources and develops strategies to reduce firearms-related violence.<sup><a href='#ATFFactFN' id='ATFFactTXT'>[21]</a></sup>
+            </p>
+          </div>
+
+        <!-- subsection divider line -->
+          <div class='row subsection_divider'>
+            <div class='one-third column offset-by-one-third column'>
+              <hr />
+            </div>
+          </div>
+
+        <!-- Intro to Gun Trafficking -->
+          <div class="row">
+            <h2>
+              Crime Guns with Recent Unrecorded Transactions or Out-of-State Purchases Were Likely Trafficked
+            </h2>
+          </div>
+          <div class="row">
+            <p>
+              Certain trace data points are particularly helpful to identify likely-trafficked guns. The most important is “time-to-crime” which is the time between the recorded date of purchase compared to the date of recovery. Guns that have a low “time-to-crime” &mdash; those firearms that are recovered by law enforcement within three years of their purchase &mdash; carry strong indicia that they were purchased with the intent to be diverted to criminal use.<sup><a href='#lowTTCFN' id="lowTTCTXT">[22]</a></sup> Other important trace data points include information about whether the possessor of the gun at the time of recovery is different than the person who purchased the gun and whether the state of purchase is different than the recovery state. If a gun has been recovered in a short period of time <em>and</em> also moved across state borders and/or between private individuals it is likely the gun was recently trafficked.
+            </p>
+            <div class="row callouts_container">
+              <div class="eight columns callouts_container">
+                <p>
+                  As described more fully in the <a href="#methodologypart">methodology section</a>, we combined these data points into a numeric snapshot that estimates the crime gun’s likelihood of having been recently trafficked. For every gun in the dataset, we created a score for each of (i) time-to-crime (“TTC”), (ii) border-crossing (“BC”), and (iii) unrecorded gun transactions (“UGT”). These three scores were then weighted and added together to form one “Trafficking Index” with scores ranging from 0-100. Because of its key link to trafficking, time-to-crime (TTC) was weighted more in the Index than moving across state lines (BC) and an unrecorded gun transaction (UGT). But because a border-crossing or unrecorded-gun-transaction are conditions precedent for trafficking, a Trafficking Index score will not be “high” without at least one of these attributes. A gun with a high Trafficking Index (closer to 100) suggests it was trafficked. Likewise, an area with a high average Trafficking Index has a higher proportion of trafficked guns. Even though a high score strongly suggests trafficking, we use the term “likely-trafficked” in the report because trace data alone cannot definitively determine whether a gun was trafficked.
+                </p>
+                <h3>
+                  Trafficking Index = (80% &times; Time-to-Crime) + (10% &times; Border Crossing) + (10% &times; Unrecorded Gun Transaction)
+                </h3>
+                <p>
+                  That said, any attempt to use trace data alone to identify trafficked guns will lead to underreporting; a low Trafficking Index does not mean a gun was not trafficked. First, in the NYAG’s experience, and as acknowledged by ATF, many older, used-guns are obtained and sold by traffickers and, even if recovered immediately upon entering New York, will lead to a low Trafficking Index score because of a longer time-to-crime.<sup><a href="#oldergunsFN" id="oldergunsTXT">[23]</a></sup> Second, a gun may be purchased anew and trafficked immediately into New York, but not be used in a crime or recovered for years, thus leading to a lower trafficking index score. In light of these facts gleaned from NYAG gun trafficking cases, we have weighted time-to-crime accordingly in our index to allow for guns slightly older than three years to be included. Third, because nearly half of all recoveries in our data have no recorded date of purchase, they are not given a Trafficking Index score, though many of them may be trafficked firearms. For this reason, when we express percentages of likely-trafficked guns, we compare raw numbers only to those guns for which we have time-to-crime data.
+                </p>
+              </div>
+              <div class="four columns callouts">
+                <h2>
+                  Key Terms
+                </h2>
+                <h3>
+                  Time-to-Crime
+                </h3>
+                <p>
+                  Time Between The Recorded Date Of Purchase Compared To The Date Of Recovery.
+                </p>
+                <h3>
+                  Border Crossing
+                </h3>
+                <p>
+                  Guns Recovered In New York Where The Original State Of Purchase Is Not New York.
+                </p>
+                <h3>
+                  Unrecorded Gun Transaction
+                </h3>
+                <p>
+                  Guns Where The Possessor Was Different Than The Original Purchaser.
+                </p>
+                <h3>
+                  Trafficked
+                </h3>
+                <p>
+                  Guns That Were Purchased With The Intent To Sell Or Transfer Illegally.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row callouts_container">
+            <div class="eight columns callouts_container">
+              <p>
+                The NYAG considers firearms with a Trafficking Index greater than or equal to 85 to have been likely purchased with the intent to illegally divert the firearm. A score of 90 or more is highly indicative that the gun was recently trafficked. Understanding the attributes of these weapons is extremely useful to law enforcement’s efforts to combat gun trafficking.
+              </p>
+            </div>
+            <div class="four columns callouts">
+              <h3>
+                A Trafficking Score Of 90+ Is Highly Indicative Of Recent Trafficking.
+              </h3>
+            </div>
+        </div>
+
+      <!-- closing section container -->
+      </div>
+
+    <!-- ===== SECTION DIVIDER ======== -->
+        <div class="section_selectors"></div>
+        <div class='sectiondivider' id='part2'>
+          <h1 class="mobile-title-scale">
+            New York Trafficking Patterns
+          </h1>
+        </div>
+
+    <!-- SECTION CONTENT: STATS, GRAPHS, AND MAPS -->
+      <div class="container">
+        <!-- CRIME GUN OVERVIEW -->
+          <div class="row">
+            <p>
+              We reviewed New York aggregate crime gun trace information from 2010-2015. While our <a href="#tool">Tracing Analytics Platform</a> enables New Yorkers to explore the aggregate data themselves, here are the highlights:
+            </p>
+          </div>
+
+          <div class="row bignumber_container">
+            <div class="two columns"></div> <!-- buffer -->
+            <div class="eight columns big_bignumbers">
+              <h1>
+                52,915
+              </h1>
+              <h2>
+                Recoveries
+              </h2>
+              <p class="bignumbers">
+                New York State law enforcement agencies recovered 52,915 firearms between 2010-2015. In 2015 alone, New York recovered 7,827 guns.
+              </p>
+            </div>
+            <div class="two columns"></div> <!-- buffer -->
+          </div>
+
+          <div class="row">
+            <div class="four columns bignumber_container">
+                <h1 class="bignumbers">
+                  74%
+                </h1>
+                <h2 class="bignumbers">
+                  Originated Out-of-State
+                </h2>
+                <p class="bignumbers">
+                  34,344 of the 46,514 recovered guns with a known source state originated outside of New York – well above the national average. Almost half of these guns originated in six states known to have weak gun laws.
+                </p>
+            </div>
+            <div class="four columns bignumber_container">
+                <h1 class="bignumbers">
+                  75%
+                </h1>
+                <h2 class="bignumbers">
+                  Handguns
+                </h2>
+                <p class="bignumbers">
+                  39,491 recoveries were handguns, of which 86% originated out-of-state. Handguns are known to be the weapon of choice among violent criminals.
+                </p>
+            </div>
+            <div class="four columns bignumber_container">
+                <h1 class="bignumbers">
+                  19%
+                </h1>
+                <h2 class="bignumbers">
+                  Low Time-to-Crime
+                </h2>
+                <p class="bignumbers">
+                  Of the 30,606 guns with complete time-to-crime data, 5,873 were recovered within three years of the last known recorded purchase. 2,437 guns were recovered within one year of purchase.
+                </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="four columns bignumber_container">
+                <h1 class="bignumbers">
+                  6%
+                </h1>
+                <h2 class="bignumbers">
+                  Purchaser = Possessor
+                </h2>
+                <p class="bignumbers">
+                  Only 3,208 guns were recovered from a possessor who was also the original purchaser of the gun. About half of these were low-time-to-crime guns.
+                </p>
+            </div>
+            <div class="four columns bignumber_container">
+                <h1 class="bignumbers">
+                  1 in 5
+                </h1>
+                <h2 class="bignumbers">
+                  Recently Trafficked
+                </h2>
+                <p class="bignumbers">
+                  Of the 30,595 guns for which we have complete data, 6,162 exhibited indicia of recent trafficking and scored 90 or above in the Trafficking Index.
+                </p>
+            </div>
+            <div class="four columns bignumber_container">
+                <h1 class="bignumbers">
+                  57%
+                </h1>
+                <h2 class="bignumbers">
+                  Out-of-State Handguns
+                </h2>
+                <p class="bignumbers">
+                  For all the guns recovered in New York State, over half belong to a single category: out-of-state handguns. If we count only those guns for which we have complete data, 65% percent of all recoveries are out-of-state handguns.
+                </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <p>
+              Comparison of New York recoveries to national averages for 2015 provides important context for understanding New York’s crime gun and trafficking patterns relative to other states. In 2015, New York recovered 7,827 guns, a relatively low number for a state its size according to NYAG's data.<sup><a href="#ny2015recoveriesFN" id="ny2015recoveriesTXT">[24]</a></sup> And with about 40 recoveries per 100,000 people in 2015, New York had half the per-capita recoveries compared to the national per-capita average (84 per 100,000 people).<sup><a href="#natlPerCapFN" id="natlPerCapTXT">[25]</a></sup>
+            </p>
+            <p>
+              However, our data shows that for guns with a recorded state of purchase (6,799), 75% of crime guns originated out-of-state in 2015, more than <em>double</em> the national average (29%) of out-of-state sources of crime guns.<sup><a href="#national_traceFN" id="national_traceTXT">[26]</a></sup> The difference for low time-to-crime guns is even starker: nationwide, only 17% of guns recovered within three years of purchase originated out-of-state, compared to <em>76%</em> of these guns in New York in 2015.<sup><a href="#national_traceFN-again" id="national_traceTXT-again">[27]</a></sup>
+            </p>
+            <p>
+              As described in more detail below, our analysis of the data revealed variation among New York’s regions as to out-of-state contributions of crime guns and also found some commonality among these regions as to the sources of likely-trafficked guns.
+            </p>
+          </div>
+
+        <!-- subsection divider line -->
+          <div class='row subsection_divider'>
+            <div class='one-third column offset-by-one-third column'>
+              <hr />
+            </div>
+          </div>
+
+        <!-- NEW YORK GUN MARKETS -->
+          <div class="row" >
+            <h2>
+              New York Has Seven Distinct Markets for Crime Guns
+            </h2>
+          </div>
+          <div class="row">
+            <p>
+              High total recoveries of crime guns in an area show that illegal guns are in demand and represent a possible “market“ jurisdiction for gun traffickers. This map of all recoveries in New York from 2010-2015 shows clusters in and around New York’s biggest cities: New York City, the Lower-Hudson Valley (including the cities of Yonkers, White Plains, Newburgh, &amp; Poughkeepsie),<sup><a href="#hudsonvalley_countiesFN" id="hudsonvalley_countiesTXT">[28]</a></sup> the Capital Region (including Albany, Troy and Schenectady),<sup><a href="#capitol-region-countiesFN" id="capitol-region-countiesTXT">[29]</a></sup> Syracuse, Rochester, and Buffalo.
+            </p>
+          </div>
+
+        <!--  MAJOR MARKETS VIZ  -->
+          <div class="row viz_box">
+          <!-- BUTTONS -->
+          <div class='row' style="margin-bottom: 0px;">
+            <div id='NYSpoints_opt' class="toggle_buttons">
+              <input name='NYSpoints' type="button" id='NYSpointsbutton' class="button toggle_buttons" value='NY State' onclick='reset_pointmap()' ga-on="click" ga-event-category="Major Markets" ga-event-action="NY State" />
+            </div>
+            <div id='NYCpoints_opt' class="toggle_buttons">
+              <input name='NYCpoints' type="button" id='NYCpointsbutton' class="button toggle_buttons" value='NYC' onclick='toggle_NYCpoint()' ga-on="click" ga-event-category="Major Markets" ga-event-action="NYC" />
+            </div>
+            <div id='LIpoints_opt' class="toggle_buttons">
+              <input name='LawnGuylandpoints' type="button" id='LIpointsbutton' class="button toggle_buttons" value='Long Island' onclick='toggle_LIpoint()' ga-on="click" ga-event-category="Major Markets" ga-event-action="Long Island" />
+            </div>
+            <div id='Hudsonpoints_opt' class="toggle_buttons">
+              <input name='Hudsonpoints' type="button" id='Hudsonpointsbutton' class="button toggle_buttons" value='Hudson Valley' onclick='toggle_Hudsonpoint()' ga-on="click" ga-event-category="Major Markets" ga-event-action="Hudson Valley" />
+            </div>
+            <div id='Albanypoints_opt' class="toggle_buttons">
+              <input name='Albanypoints' type="button" id='Albanypointsbutton' class="button toggle_buttons" value='Capital Region' onclick='toggle_Albanypoint()' ga-on="click" ga-event-category="Major Markets" ga-event-action="Capitol Region" />
+            </div>
+            <div id='Syracusepoints_opt' class="toggle_buttons">
+              <input name='Syracusepoints' type="button" id='Syracusepointsbutton' class="button toggle_buttons" value='Syracuse' onclick='toggle_Syracusepoint()' ga-on="click" ga-event-category="Major Markets" ga-event-action="Syracuse" />
+            </div>
+            <div id='Rochesterpoints_opt' class="toggle_buttons">
+              <input name='Rochesterpoints' type="button" id='Rochesterpointsbutton' class="button toggle_buttons" value='Rochester' onclick='toggle_Rochesterpoint()' ga-on="click" ga-event-category="Major Markets" ga-event-action="Rochester" />
+            </div>
+            <div id='Buffalopoints_opt' class="toggle_buttons">
+              <input name='Buffalopoints' type="button" id='Buffalopointsbutton' class="button toggle_buttons" value='Buffalo' onclick='toggle_Buffalopoint()' ga-on="click" ga-event-category="Major Markets" ga-event-action="Buffalo" />
+            </div>
+          </div>
+
+          <!-- RECOVERY DOTMAP -->
+
+            <div class='row'>
+              <!-- the map -->
+              <div class='eight columns svg-container-recoverymap' id='recoverymap'>
+                  <svg class='svg-content-responsive'></svg>
+              </div>
+              <!-- text for map -->
+              <div class='four columns map_text mobile-clear'>
+                <div class='map_stats'>
+                  <h2 id='dyn_cityname'>
+                  </h2>
+                  <p>
+                    Total Recovered Guns:
+                  </p>
+                  <h2 id='dyn_total_guns'>
+                  </h2>
+                  <p>
+                    Percent Originating Out-of-State:
+                  </p>
+                  <h2 id='dyn_prct_oos'>
+                  </h2>
+                  <p>
+                    Trafficking Index:
+                  </p>
+                  <h2 id='dyn_traffic_ix'>
+                  </h2>
+                  <p>
+                    Total Recovered Handguns:
+                  </p>
+                  <h2 id="dyn_handguns">
+                  </h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mobile-clear" id="recoverymap_text">
+              <p id="dyntext" class="dynamic_text"></p>
+            </div>
+          </div>
+
+        <!-- subsection divider line -->
+          <div class='row subsection_divider'>
+            <div class='one-third column offset-by-one-third column'>
+              <hr />
+            </div>
+          </div>
+
+        <!--  IN-STATE VS. OUT-OF-STATE  -->
+          <div class='row' >
+            <h2>
+              Variation in Out-of-State Sources by Market Shows Impact of State and Local Laws
+            </h2>
+          </div>
+          <div class="row">
+            <p>
+              Of the 52,915 crime guns recovered in New York between 2010 and 2015, 74% have a recorded sale from an FFL located in a state other than New York. As the chart below shows, the number of guns originating out-of-state varies by crime gun market. In every market except New York City, the percentage of in-state guns increases when we look only at low time-to-crime guns. In contrast, among low time-to-crime handguns, the in-state figure drops to 14% as every market sees a marked increase in percentage of out-of-state recoveries.
+            </p>
+          </div>
+
+        <!--  DIVERGING PERCENTAGE CHARTS  -->
+          <div class="row viz_box">
+            <!-- BUTTONS! -->
+            <div class='row'>
+              <div id='allguns_opt' class="toggle_buttons">
+                <input name='allguns' type='button' id='allguns_button' class="button toggle_buttons" value='All Guns' onclick='toggle_allguns()' ga-on="click" ga-event-category="Diverging Percentage Chart" ga-event-action="All Guns" />
+              </div>
+              <div id='highTTC_opt' class="toggle_buttons">
+                <input name='highTTCguns' type='button' id='highTTCguns_button' class="button toggle_buttons" value='Low Time-to-Crime Guns' onclick='toggle_highttc()' ga-on="click" ga-event-category="Diverging Percentage Chart" ga-event-action="Low Time-to-Crime Guns"  />
+              </div>
+              <div id='highTTChandguns_opt' class="toggle_buttons">
+                <input name='highTTChandguns' type='button' id='highTTChandguns_button' class="button toggle_buttons" value='Low Time-to-Crime Handguns' onclick='toggle_handguns()' ga-on="click" ga-event-category="Diverging Percentage Chart" ga-event-action="Low Time-to-Crime Handguns"  />
+              </div>
+            </div>
+
+            <!-- BAR CHART! -->
+            <div class="row" id="barall-container">
+              <div id='barall' class="row svg-container-diverging-bar">
+                  <svg class='svg-content-responsive-diverging-bar'></svg>
+              </div>
+            </div>
+
+            <div class="row mobile-clear" id="divergingbar_text">
+              <p id='dynamicdivergingbar' class="dynamic_text">
+              </p>
+            </div>
+          </div>
+
+        <!-- subsection divider line -->
+          <div class='row subsection_divider'>
+            <div class='one-third column offset-by-one-third column'>
+              <hr />
+            </div>
+          </div>
+
+        <!--  STATE BLOCKMAP  -->
+          <div class='row'>
+            <h2>
+              New York's Likely-Trafficked Guns Predominately Come from Iron Pipeline States
+            </h2>
+          </div>
+          <div class="row">
+            <p>
+              The NYAG’s Organized Crime Task Force and other law enforcement agencies have frequently disrupted gun trafficking schemes that purchase firearms, predominately handguns, in states south of New York along the I-95 corridor and that transport the weapons to New York markets. These states &mdash; Pennsylvania, Virginia, North Carolina, South Carolina, Georgia, and Florida &mdash; have been identified as net “exporter” or “supplier” states<sup><a href='#ironpipelineFN' id='ironpipelineTXT'>[30]</a></sup> and the steady stream of firearms along the interstate has earned it the nickname “the Iron Pipeline.”<sup><a href="#ironpipelinenameFN" id="ironpipelinenameTXT">[31]</a></sup> Our analysis of the data shows these states deserve their anecdotal nickname. In addition to the Iron Pipeline states, Ohio, which has easy access to western New York via I-90, stands out as an important but often overlooked source of crime guns, particularly to the Buffalo, Rochester, and Syracuse markets.
+            </p>
+            <p>
+              The below map shows the percentage of New York’s likely-trafficked guns, those guns with a trafficking index of greater than or equal to 90. There were 6,162 guns recovered around the State in this set, of which 5,793 (94%) were recovered in a market jurisdiction.
+            </p>
+          </div>
+
+          <div class="row viz_box">
+            <div class='row' style="margin-bottom: 0px;">
+              <div id='block_NYS_opt' class="toggle_buttons">
+                <input name='NYS' type='button' id='NYS_button' class="button toggle_buttons" value='NY State' onclick='toggle_block("nys_prct")' ga-on="click" ga-event-category="State Block Map" ga-event-action="NY State" />
+              </div>
+              <div id='block_nyc_u3_opt' class="toggle_buttons">
+                <input name='nyc_under3' type='button' class="button toggle_buttons" value='NYC' onclick='toggle_block("nyc_prct")' ga-on="click" ga-event-category="State Block Map" ga-event-action="NYC" />
+              </div>
+              <div id='block_longisland_opt' class="toggle_buttons">
+                <input name='lawnguyland' type='button' class="button toggle_buttons" value='Long Island' onclick='toggle_block("longisland_prct")' ga-on="click" ga-event-category="State Block Map" ga-event-action="Long Island" />
+              </div>
+              <div id='block_hudsonvalley_opt' class="toggle_buttons">
+                <input name='hudson' type='button' class="button toggle_buttons" value='Hudson Valley' onclick='toggle_block("hudson_prct")' ga-on="click" ga-event-category="State Block Map" ga-event-action="Hudson Valley" />
+              </div>
+              <div id='block_albany_opt' class="toggle_buttons">
+                <input name='albany' type='button' class="button toggle_buttons" value='Capital Region' onclick='toggle_block("albany_prct")' ga-on="click" ga-event-category="State Block Map" ga-event-action="Capital Region" />
+              </div>
+              <div id='block_syracuse_opt' class="toggle_buttons">
+                <input name='syracuse' type='button' class="button toggle_buttons" value='Syracuse' onclick='toggle_block("onondaga_prct")' ga-on="click" ga-event-category="State Block Map" ga-event-action="Syracuse" />
+              </div>
+              <div id='block_rochester_opt' class="toggle_buttons">
+                <input name='rochester' type='button' class='button toggle_buttons' value='Rochester' onclick='toggle_block("monroe_prct")' ga-on="click" ga-event-category="State Block Map" ga-event-action="Rochester" />
+              </div>
+              <div id='block_Buffalo_opt'  class="toggle_buttons">
+                <input name='buffalo' type='button' class="button toggle_buttons" value='Buffalo' onclick='toggle_block("erie_prct")' ga-on="click" ga-event-category="State Block Map" ga-event-action="Buffalo" />
+              </div>
+            </div>
+
+            <!-- map -->
+            <div class='row' id="blockmap-container">
+              <div id='blockmap' class="row svg-container">
+                <svg class='svg-content-responsive'></svg>
+              </div>
+            </div>
+
+            <div class="row mobile-clear" id='blockmap_text' style="padding-top: 0px;">
+              <p id='dynamicblockmap' class="dynamic_text">
+                  <!-- right here is where the content for each market populates on click -->
+              </p>
+            </div>
+          </div>
+
+        <!-- subsection divider line -->
+            <div class='row subsection_divider'>
+              <div class='one-third column offset-by-one-third column'>
+                <hr />
+              </div>
+            </div>
+
+        <!--  STATES THAT SEND SHORT TTC GUNS TO NY  -->
+          <div class='row' >
+            <h2>
+              New York’s Gun Traffickers Choose States with Weak Gun Laws to Get their Guns
+            </h2>
+          </div>
+          <div class="row">
+            <p>
+              There were certain commonalities among the states that supply New York with its trafficked guns. First, all are “net exporters” of crime guns according to ATF national statistics.<sup><a href='#netexportstatesFN' id='netexportstatesTXT'>[32]</a></sup> Each also generally scores poorly on objective measures of the strength of gun safety laws.<sup><a href="#gunlawscoreFN" id="gunlawscoreTXT">[33]</a></sup> In particular, these states lack gun laws fundamental to preventing illegal diversion. For instance, all but one of these states have no requirements for background checks for private sales or at gun shows (Pennsylvania, and only for handguns). And all but one do not require a permit prior to a handgun purchase (North Carolina). This is a stark contrast to the other states along I-95 south, which were responsible for just over 2% of New York’s trafficked guns combined. New Jersey, for instance, requires a permit for handguns and long guns, each requiring a background check. Even though New Jersey shares a border with and has several major arteries into New York, it contributed less than one percent of New York’s trafficked guns.
+            </p>
+            <p>
+              From New York’s vantage point, the correlation between state and local laws and the source of trafficked guns is undeniable. We believe the weakness of the gun laws in the Iron Pipeline states and Ohio, combined with direct access to New York via interstate highways and public transportation, has made them become the source-of-choice among gun traffickers running guns into New York.<sup><a href="#OCTFcasesFN" id="OCTFcasesTXT">[34]</a></sup>
+            </p>
+          </div>
+          <div class="row viz_box">
+            <div class="row">
+              <div id="export_states_USA" class="toggle_buttons">
+                <input type="button" name="Pipeline" id="US_button" class="button toggle_buttons badstate_buttons" value="Pipeline" onclick="reset_export_states()" ga-on="click" ga-event-category="New York Pipeline" ga-event-action="Overview">
+              </div>
+              <div id='export_states_PA' class="toggle_buttons">
+                <input type="button" name="PA" id='PA_button' class="button toggle_buttons badstate_buttons" value="Pennsylvania" onclick="toggle_state(42)" ga-on="click" ga-event-category="New York Pipeline" ga-event-action="Pennsylvania">
+              </div>
+              <div id='export_states_VA' class="toggle_buttons">
+                <input type="button" name="VA" id='VA_button' class="button toggle_buttons badstate_buttons" value="Virginia" onclick="toggle_state(51)" ga-on="click" ga-event-category="New York Pipeline" ga-event-action="Virginia">
+              </div>
+              <div id='export_states_NC' class="toggle_buttons">
+                <input type="button" name="NC" id='NC_button' class="button toggle_buttons badstate_buttons" value="North Carolina" onclick="toggle_state(37)"  ga-on="click" ga-event-category="New York Pipeline" ga-event-action="North Carolina">
+              </div>
+              <div id='export_states_SC' class="toggle_buttons">
+                <input type="button" name="SC" id='SC_button' class="button toggle_buttons badstate_buttons" value="South Carolina" onclick="toggle_state(45)" ga-on="click" ga-event-category="New York Pipeline" ga-event-action="South Carolina">
+              </div>
+              <div id='export_states_GA' class="toggle_buttons">
+                <input type="button" name="GA" id='GA_button' class="button toggle_buttons badstate_buttons" value="Georgia" onclick="toggle_state(13)" ga-on="click" ga-event-category="New York Pipeline" ga-event-action="Georgia">
+              </div>
+              <div id='export_states_FL' class="toggle_buttons">
+                <input type="button" name="FL" id='FL_button' class="button toggle_buttons badstate_buttons" value="Florida" onclick="toggle_state(12)" ga-on="click" ga-event-category="New York Pipeline" ga-event-action="Florida">
+              </div>
+              <div id='export_states_OH' class="toggle_buttons">
+                <input type="button" name="OH" id='OH_button' class="button toggle_buttons badstate_buttons" value="Ohio" onclick="toggle_state(39)" ga-on="click" ga-event-category="New York Pipeline" ga-event-action="Ohio">
+              </div>
+            </div>
+
+            <div class="row">
+              <div id='export_states' class="eight columns svg-container-recoverymap">
+                <svg class='svg-content-responsive'></svg>
+              </div>
+
+              <div id='export_states_textbox' class="four columns map_text mobile-clear">
+                <div class="map_stats">
+                  <h3 id='export_states_name'>
+                  </h3>
+                  <p>
+                    Total Guns to New York:
+                  </p>
+                  <h3 id='export_states_numguns'>
+                  </h3>
+                  <p>
+                    Percentage of Trafficked Guns to New York:
+                  </p>
+                  <h3 id='export_states_prctguns'>
+                  </h3>
+                  <p>
+                    Trafficking Index:
+                  </p>
+                  <h3 id='export_states_ix'>
+                  </h3>
+                  <p>
+                    Handguns Sent to New York:
+                  </p>
+                  <h3 id='export_states_numhandguns'>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div class="row" id="exportstates_text">
+              <p id='export_states_dyntext' class="dynamic_text">
+              </p>
+            </div>
+          </div>
+
+
+      <!-- closing chapter container -->
+      </div>
+
+    <!-- ===== CHAPTER DIVIDER ======== -->
+        <div class="section_selectors"></div>
+        <div class='sectiondivider' id='part3'>
+          <h1 class="mobile-title-scale">
+            Recommendations
+          </h1>
+        </div>
+
+    <!-- CHAPTER CONTENT: RECOMMENDATIONS -->
+      <div class="container">
+        <div class="row">
+          <p>
+            New York’s leaders and citizens are deeply committed to ending gun violence and illegal guns in the State. Efforts to reduce gun violence and the scourge of illegal guns through changes in law have been largely successful.
+          </p>
+          <p>
+            Yet it is often said that gun laws can’t work to keep guns from criminals because criminals don’t obey laws. Critics point to gun violence in American cities that have strong gun laws as evidence that the laws should be abandoned. The lie in those arguments is laid bare by the data: gun laws <em>do</em> make it harder for criminals to get guns where those laws are in effect. But it is no doubt true that existing state gun laws are made far less effective when there are guns readily available to criminals in a nearby state with weaker laws.
+          </p>
+          <p>
+            With no federal framework or baseline for ensuring background checks for private sales or permits for purchasing handguns, New York is at the mercy of states more committed to protecting firearms commerce than protecting the citizenry from the violence associated with illegal guns. The federal government’s inaction on sensible national gun laws, coupled with the lax laws of other states, make states like New York a target of trafficking. In short, New York cannot fully defend itself by itself.
+          </p>
+          <p>
+            Below we list recommendations at the federal and state level that would help prevent illegal guns from pouring in to New York from other states and propose recommendations for New York State and localities on how to improve in this area absent outside action.
+          </p>
+        </div>
+        <div class="row">
+          <h2>
+            Federal
+          </h2>
+        </div>
+        <div class="row">
+          <h3>
+            Require Universal Background Checks; Close the “Gun Show Loophole”
+          </h3>
+          <p>
+            Approximately 90% of the guns in our data had an unregistered transaction, and it is likely that many of these guns changed hands without a background check because private sales under federal law do not require an FFL-administered background check. Requiring these simple checks for private sales and at gun shows will prevent unwitting firearm sales to dangerous and disqualified persons.
+          </p>
+          <h3>
+            Make Gun Trafficking a Federal Crime
+          </h3>
+          <p>
+            Currently, there is no federal law prohibiting gun trafficking. Last year, Senator Kirsten Gillibrand (D-NY) and Senator Mark Kirk (R-IL) introduced the Gun Trafficking Prevention Act of 2015, in effort to change this. The Act makes it illegal to traffic or conspire in the trafficking of a firearm, to deliver or receive two or more firearms where the individual knows or has reason to believe that the firearms are being sold to a prohibited person, and to lie on an ATF form. Because it carries stiff penalties and allows federal, state, or local law enforcement to use the law, passing the law would help crack down on interstate firearms trafficking. 
+          </p>
+          <h3>
+            Expand Access to Summary Trace Data
+          </h3>
+          <p>
+            At present, restrictions in federal appropriations bills – the Tiahrt Amendments – prevent ATF from sharing trace data with agencies and institutions that are not part of law enforcement, but who could help utilize crime gun data to make informed gun policy decisions. Even summary level data – like the kind analyzed in this report – can illuminate unseen problems and trends. If Congress is committed to curbing gun violence, it should loosen the restrictions.
+          </p>
+        </div>
+        <div class="row">
+          <h2>
+            State
+          </h2>
+        </div>
+        <div class="row">
+          <h3>
+            Require Licenses to Own Handguns
+          </h3>
+          <p>
+            The data in this report suggest that New York’s licensing requirement for handguns is a strong deterrent for criminals who seek to obtain these firearms. Simply put, they go elsewhere. No state should want to be a destination for violent criminals or a promoter of gun trafficking syndicates. Licensing requirements for handguns are the best way to stop criminals from obtaining the firearms most often used in violent crimes without placing a heavy burden on lawful gun owners.
+          </p>
+        </div>
+        <div class="row">
+          <h2>
+            New York
+          </h2>
+        </div>
+        <div class="row">
+          <h3>
+            Pass the Gun Kingpin Bill
+          </h3>
+          <p>
+            Since law enforcement cannot completely stop the out-of-state sale of guns to criminals who import them to New York, the State should amend the penal law to punish traffickers so severely that the business becomes too risky a proposition. Presently, the highest criminal charge gun traffickers can face is a B felony, for illegal sale or illegal possession of ten or more firearms, and there is no difference in charge or penalty between a trafficker who sells 10 or 100 guns.<sup><a href="#NYtraffickingLawFN" id="NYtraffickingLawTXT">[47]</a></sup> A bill introduced by Senator Jeffrey Klein and Assemblymember Amy Paulin and supported by Attorney General Schneiderman, Manhattan District Attorney Cyrus Vance, the District Attorney’s Association of New York, and the NYPD, would make the illegal sale or illegal possession of over 20 firearms an A-1 felony, with a sentence of 25 to life. The Legislature should pass it and send a message to traffickers who think New York is an attractive market for illegal gun sales to think again.
+          </p>
+          <h3>
+            Share Gun Trace Data and Intelligence
+          </h3>
+          <p>
+            State and local law enforcement in New York should continue to work together to fight the scourge of illegal guns. In addition to using this report and the Tracing Analytics Platform to better target trafficking, we should explore other ways to use trace data to crack down on corrupt FFLs, straw purchasers, and interstate gun traffickers. On this score, NYAG encourages all law enforcement entities to subscribe to eTrace, ATF’s online platform for trace data, and to take advantage of the new functionality that allows agencies to share their trace data with other law enforcement agencies in the state. Doing so will create better collaboration between law enforcement entities and will allow for better subsequent analysis of trafficking patterns.
+          </p>
+        </div>
+
+      <!-- closing chapter container -->
+      </div>
+
+    <!-- ===== CHAPTER DIVIDER ======== -->
+        <div class="section_selectors"></div>
+        <div class='sectiondivider' id="part4">
+          <h1 class="mobile-title-scale">
+            Tracing Analytics Platform (TAP)
+          </h1>
+        </div>
+
+    <!-- =============== CHAPTER: THE TOOL ===================== -->
+        <div class="thetooldiv" id='tool'> 
+          <div class="row mobile-hide tableauContainer">
+             <div class='tableauPlaceholder' id='viz1477345170846'>
+              <noscript>
+                <a href='https:&#47;&#47;targettrafficking.ag.ny.gov&#47;tool&#47;'>
+                  <img alt='Public Dashboard ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;NY&#47;NYAGGunTracingAnalyticsPlatformTAP&#47;PublicDashboard&#47;1_rss.png' style='border: none' />
+                </a>
+              </noscript>
+              <object class='tableauViz'  style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                <param name='site_root' value='' />
+                <param name='name' value='NYAGGunTracingAnalyticsPlatformTAP&#47;PublicDashboard' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='yes' />
+                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;NY&#47;NYAGGunTracingAnalyticsPlatformTAP&#47;PublicDashboard&#47;1.png' />
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+              </object>
+            </div>
+            <script type='text/javascript'>
+              var divElement = document.getElementById('viz1477345170846');
+              var vizElement = divElement.getElementsByTagName('object')[0];
+                  vizElement.style.width='100%';vizElement.style.maxwidth="1280px";vizElement.style.height='860px';
+              var scriptElement = document.createElement('script');
+                  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+              vizElement.parentNode.insertBefore(scriptElement, vizElement);
+            </script>
+          </div>
+
+          <div class="row mobile-show sectiondivider" >
+            <div class="one column"></div> 
+            <div class="ten columns" style="border-top: 1px solid #fff; border-bottom: 1px solid #fff; padding: 20px;">
+              <h1>
+                Our Tracing Analytics Platform isn't fully mobile-compatible, but we encourage you to take a look on your laptop or desktop in full-screen.
+              </h1>
+            </div>
+            <div class="one column"></div> <!-- buffer divs -->
+          </div>
+       <!-- closing section container -->
+        </div>
+
+    <!-- ===== CHAPTER DIVIDER LINE ======== -->
+        <div class='sectiondivider' id='methodologypart'>
+          <h1 class="mobile-title-scale">
+            Methodology
+          </h1>
+        </div>
+       <!-- CHAPTER CONTENT: METHODOLOGY AND FOOTNOTES -->
+      <div class="section_selectors"></div>
+      <div class="container">
+        <p>
+          This section highlights the steps the New York State Office of the Attorney General (“NYAG”) took to collect, clean, and analyze the data outlined in this report.
+        </p>
+        <!-- DATA AND METHODOLOGY -->
+          <div class="row">
+            <h2>
+              Data Collection
+            </h2>
+          </div>
+          <div class="row">
+            <h3>
+              ATF Trace Data
+            </h3>
+            <p>
+              On June 13, 2016, the Federal Bureau of Alcohol Tobacco Firearms and Explosives ("ATF") provided the data used in this report to the NYAG. Pursuant to the Consolidated and Further Continuing Appropriations Act, 2012, PL 112-55 Nov. 18, 2011), commonly referred to as the “Tiahrt Amendments” to the federal budget, ATF is severely restricted in what trace data it may share and with whom, but may share such data with state and local law enforcement and prosecutors. While the data included summary-level information on the state and date of purchase, recovery location, and certain information about the firearm, it did not, for instance, include the name or address of Federal Firearms Licensed (FFL) dealers who sold the guns ultimately recovered in New York, nor the name and address of the recorded purchasers of the guns, nor the name and address of the possessor of the guns. (ATF stated that such information could be made available with consent of the original tracing parties.) ATF also stated that NYAG could use such information to produce public aggregate statistical reports similar to those published by ATF.
+            </p>
+            <p>
+              According to ATF, the data included/excluded the following<sup><a href="#ATFdatacaveatsFN" id="ATFdatacaveatsTXT">[48]</a></sup>:
+            </p>
+
+            <ul>
+              <li>
+                "[A]ll firearms with a recovery state of New York, or, if the recovery state was not provided, the requesting agency state was used if the agency had jurisdiction only within New York."
+              </li>
+              <li>
+                "Traces with a recovery date between January 1, 2010 &mdash; December 31, 2015 were selected. However, if the recovery date was blank, traces with an entry date between January 1, 2010 &mdash; December 31, 2015 were also selected."
+              </li>
+              <li>
+                "Duplicate, Sensitive, Firearm Not Recovered, Gun Buyback and Firearm Turned In traces were excluded when present."
+              </li>
+              <li>
+                "This information was queried from the Firearms Tracing System (FTS) on May 16, 2016 and all traces may not have been submitted or completed at the time of this data extract."
+              </li>
+            </ul>
+
+            <p>
+              NYAG additionally removed from the data 309 guns recovered in Delaware County on 01/16/2014. This recovery reflected the seizure of inventory of an FFL that was operating unlawfully.
+            </p>
+          </div>
+          <div class="row">
+            <h3>
+              US Census Bureau
+            </h3>
+            <p>
+              We downloaded United States Census Bureau Annual Estimates of the Resident Population for each New York State county from 2010 through 2015. This data is used later to calculate firearm recoveries per 100,000 residents by year.<sup><a href="#censuspopFN" id="censuspopTXT">[49]</a></sup>
+            </p>
+          </div>
+        <!-- DATA QUALITY -->
+          <div class="row">
+            <h2>
+              Data Quality
+            </h2>
+          </div>
+          <div class="row">
+            <p>
+              As noted, the data provided summary-level information for recovered firearms in New York State between 2010 and 2015. The table below shows the number of distinct values and percentage of null values for each of the variables that we relied on in the report. For example, 12% of the traces did not have a state name for the last known sale from an FFL. All percentages, unless otherwise noted in the report, use the number of non-null values as denominator. Where a data point is missing from a gun, we do not include it when calculating percentages of gun characteristics. For example, for statewide calculations, 46,514 is used for out-of-state percentages, 30,606 is used for calculating percentage of low time-to-crime, and 30,595 is used to calculate percentage of guns that were trafficked.
+            </p>
+          </div>
+
+        <!-- DATA DICTIONARY TABLE -->
+          <div class="row mobile-hide">
+            <table class="u-full-width">
+              <thead>
+                <tr>
+                  <th>Variable Name</th>
+                  <th>Description</th>
+                  <th>Distinct Values</th>
+                  <th>Percentage Null Values</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ffl_state_name</td>
+                  <td>State of last known sale from Federal Firearms Licensed (FFL) dealer</td>
+                  <td>60</td>
+                  <td>12%</td>
+                </tr>
+                <tr>
+                  <td>purchase_date</td>
+                  <td>Last recorded purchase date from a licensed FFL</td>
+                  <td>12,376</td>
+                  <td>42%</td>
+                </tr>
+                <tr>
+                  <td>purchaser_possessor_same_date_of_birth<sup><a href="#pur_pos_same_dobFN" id="pur_pos_samedobTXT">[50]</a></sup></td>
+                  <td>ATF-calculated field denoting where the date of birth for the last recorded purchaser from a licensed FFL matches that of the possessor of the recovered firearm. This field contained only the number one (“1”) or null value – no identifying information about purchaser or possessor was included in the data.</td>
+                  <td>2</td>
+                  <td>95%</td>
+                </tr>
+                <tr>
+                  <td>purchaser_possessor_same_last_first_name<sup><a href="#pur_pos_same_nameFN" id="pur_pos_same_nameTXT">[51]</a></td>
+                  <td>ATF-calculated field denoting where the name for the last recorded purchaser from a licensed FFL matches that of the possessor of the recovered firearm. This field contained only the number one (“1”) or null value – no identifying information about purchaser or possessor was included in the data.</td>
+                  <td>2</td>
+                  <td>95%</td>
+                </tr>
+                <tr>
+                  <td>purchaser_possessor_same_street_address<sup><a href="#pur_pos_same_addrFN" id="pur_pos_same_addrTXT">[52]</a></sup></td>
+                  <td>ATF-calculated field denoting where the address for the last recorded purchaser from a licensed FFL matches that of the possessor of the recovered firearm. This field contained only the number one (“1”) or null value – no identifying information about purchaser or possessor was included in the data.</td>
+                  <td>2</td>
+                  <td>98%</td>
+                </tr>
+                <tr>
+                  <td>recovery_city</td>
+                  <td>City where firearm was recovered</td>
+                  <td>1,332</td>
+                  <td>0%</td>
+                </tr>
+                <tr>
+                  <td>recovery_county</td>
+                  <td>County name where firearm was recovered</td>
+                  <td>223</td>
+                  <td>6%</td>
+                </tr>
+                <tr>
+                  <td>recovery_date</td>
+                  <td>Date when firearm was recovered</td>
+                  <td>2,192</td>
+                  <td>1%</td>
+                </tr>
+                <tr>
+                  <td>recovery_zip</td>
+                  <td>Zip code where firearm was recovered</td>
+                  <td>3,220</td>
+                  <td>2%</td>
+                </tr>
+                <tr>
+                  <td>weapon_type</td>
+                  <td>Type of weapon recovered</td>
+                  <td>14</td>
+                  <td>0%</td>
+                </tr>
+                <tr>
+                  <td>year</td>
+                  <td>Year of firearm recovery</td>
+                  <td>6</td>
+                  <td>0%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        <!-- DATA CLEANING -->
+          <div class="row">
+            <h2>
+              Data Cleaning
+            </h2>
+          </div>
+          <div class="row">
+            <p>
+              The original dataset consisted of 53,224 tracing records. 309 traces from January 16, 2014 in Delaware County, New York were identified as part of an ATF seizure of an FFL’s inventory. These traces were subsequently removed to prevent undue influence on the analysis. The revised dataset analyzed consisted of 52,915 tracing records.
+            </p>
+            <p>
+              A unique identification number <code>ID</code> was added to every recovery in the data set.
+            </p>
+            <p>
+              Two ATF data fields &mdash; <code>Recovery_zip</code> and <code>Recovery_county</code> &mdash; required additional cleaning and standardization to be used in the analysis. The steps taken to standardize and clean those fields are listed below.
+            </p>
+            <h3>
+              Recovery Zip
+            </h3>
+            <p>
+              Recovery_zip was standardized to five digits in as many cases as possible. After standardization, 1,388 traces had invalid zip codes that were included in the analysis, but not displayed in any zip-code level mapping.
+            </p>
+            <h3>
+              Recovery County
+            </h3>
+            <p>
+              Recovery_county was updated for 4,442 traces for any null values, spelling errors, or inaccuracies. To clean and standardize these traces, the correct county was assigned to the trace records based off Recovery_zip or Recovery_city. Recovery_zip was utilized first in order to assign the correct county and if this value was null or invalid, then the correct county was assigned based off of Recovery_city.<sup><a href="#twocountyzipsFN" id="twocountyzipsTXT">[53]</a></sup>
+            </p>
+          </div>
+
+        <!-- DESCRIPTION OF TRAFFICKING INDEX -->
+          <div class="row">
+            <h2>
+              Assessing Guns for Likelihood of Trafficking
+            </h2>
+          </div>
+          <div class="row">
+            <p>
+              We created and assigned each gun in the data three scores to quantify the likelihood that the gun was trafficked. Each of these categories was derived from our experience with trafficked guns as well as our research into the use of trace data by ATF and others to determine whether it was likely that a particular firearm was trafficked.
+            </p>
+            <p>
+              Guns recovered within three years of purchase have a low “time-to-crime” and were likely purchased with the intent to be diverted to criminal use. Where a low time-to crime gun has also moved across state borders or has been sold in an unrecorded transaction, trafficking is highly likely. For every gun in the dataset, we gave it a value for each of (i) time-to-crime (TTC), (ii) border-crossing (BC), and (iii) unrecorded gun transactions (UGT), which we weighted and combined to make a 0-100 “Trafficking Index.” 
+            </p>
+          </div>
+          <div class="row">
+            <h3>
+              1. Time-to-Crime:
+            </h3>
+            <p class="mobile-hide">
+              The chart below shows all New York crime gun recoveries with a known date of purchase. The most frequent time-to-crime of recovered guns in New York is less-than-one year with 2,437 recoveries, followed by 1,835 with a 1-2 year time-to-crime, and 1,601 guns with a 2-3 year time-to-crime. The long “tail” shown means that a simple “average” time-to-crime is not a useful metric if one is trying to understand the characteristics of potentially trafficked guns.
+            </p>
+            <p class="mobile-show">
+              The most frequent age of crime guns in New York is less-than-one year with 2,437 recoveries, followed by 1,835 with a 1-2 year time-to-crime, and 1,601 guns with a 2-3 year time-to-crime. The long “tail” means that a simple “average” time-to-crime is not a useful metric if one is trying to understand the characteristics of potentially trafficked guns.
+            </p>
+          </div>
+              <!-- BAR CHART! -->
+              <div class="row mobile-hide">
+                <div id='TTC_bar_chart'>
+                  <svg></svg>
+                </div>
+              </div>
+          <div class="row">
+            <p>
+              For purposes of this report, we created a system for standardizing the time-to-crime of a crime gun. First, we assigned every crime gun a time-to-crime score (TTC) which inversely weights the gun for its time-to-crime, with a maximum recovery time of 600 months (50 years).<sup><a href="#50yearcutoffFN" id="50yearcutoffTXT">[54]</a></sup> The TTC is ((600 - [# of months between sale and recovery]/600). If a gun was recovered immediately after it was purchased it would have a score of 1 and carries a high likelihood of being purchased with intent to be used in a crime. A TTC of over .94 (recovered within three years of recorded purchase) is “high”. If a gun was recovered 600 months after it was purchased, it would have a TTC of zero. Any gun recovered more than 600 months after it was purchased also scores zero.
+            </p>
+          </div>
+
+          <div class="row">
+            <h3>
+              2. Border-Crossing
+            </h3>
+            <p>
+              Gun trafficking does not require a state-border crossing, but guns that do cross a state-border (especially within a short period of time) are more likely to be trafficked. Though ATF did not provide NYAG detailed data about the FFLs who sold the guns recovered in New York, it did provide the state of each FFL (the “source state”) where such data was known. For every crime gun with a known source state, we gave it a Border Crossing score of 1 if it originated outside of New York, and a score of 0 if it originated inside New York.
+            </p>
+          </div>
+
+          <div class="row">
+            <h3>
+              3. Unrecorded Gun Transactions
+            </h3>
+            <p>
+              ATF did not provide personal identifying information for the gun purchasers and possessors in our data set. However, it noted when the purchaser had the same name, birthdate, or address as the ultimate possessor at the time of recovery, facts that strongly suggest the gun did not change hands between purchase and recovery. For 6% of recovered guns in New York State, the person in possession of the recovered firearm was the last known purchaser for that same firearm.
+            </p>
+            <p>
+              For all other crime guns in the set, there is a least one unrecorded (though not necessarily illegal) transaction, which is a condition precedent for trafficking. If there is an unrecorded gun transaction (UGT) associated with a crime gun in our set, we gave it a UGT score of 1; if not, then zero.
+            </p>
+          </div>
+
+          <div class="row">
+            <h3>
+              Trafficking Index
+            </h3>
+            <p>
+              We weighted the three above scores to create a 0-100 Trafficking Index. The weighted equation for the Trafficking Index is:
+            </p>
+            <h3 style="text-align:center; color:#de2d26; font-size: 20px;">
+              TI = ((TTC &times; 80%) + (BC &times; 10%) + (UGT &times; 10%)) &times; 100
+            </h3>
+            <p>
+              The time between the gun purchase and gun recovery (TTC) is given the greatest weight, while moving across state lines (BC) and an unrecorded gun transaction (UGT) are incrementally weighted. This way, only guns that are reaching crime scenes quickly will be tagged as potentially trafficked, while border crossings and unrecorded transactions elevate low time-to-crime guns to the top of the index as more likely-trafficked. Each gun in the data set was assigned a Trafficking Index score based on these criteria.
+            </p>
+          </div>
+
+        <!-- ANALYSIS AND VISUALIZATION -->
+          <div class="row">
+            <h2>
+              Analysis and Visualization
+            </h2>
+          </div>
+          <div class="row mobile-show">
+            <p>
+              The data was imported into Tableau Desktop Professional Edition 9.0 for analysis and visualization. Tableau 9.0 was also used to create an interactive dashboard of the data published in the Tableau Public repository. To see the calculations that we ran in Tableau, please open this site on your laptop or desktop at full screen-width.
+            </p>
+          </div>
+          <div class="row mobile-hide">
+            <p>
+              The data was imported into Tableau Desktop Professional Edition 9.0 for analysis and visualization. Tableau 9.0 was also used to create the interactive dashboard of the data, the “Tracing Analytics Platform,” published in the Tableau Public repository. The following groupings and calculations were made:
+            </p>
+              <h3>
+                Total Recovered Guns
+              </h3>
+              <p>
+                A count of each line of data, or each firearm recovery, in the dataset by counting the distinct number of <code>[ID]s</code>
+              </p>
+
+              <h3>
+                Recovery Market
+              </h3>
+              <p>
+                Recovery Market was defined as the following recovery_counties:
+                <ul>
+                  <li>
+                    Buffalo – Erie and Niagara
+                  </li>
+                  <li>
+                    Capital Region – Albany, Saratoga, Schenectady, and Rensselaer
+                  </li>
+                  <li>
+                    New York City – Bronx, Kings, New York, Queens, and Richmond
+                  </li>
+                  <li>
+                    Long Island – Nassau and Suffolk
+                  </li>
+                  <li>
+                    Lower Hudson Valley - Dutchess, Orange, Putnam, Rockland, Ulster, and Westchester
+                  </li>
+                  <li>
+                    Rochester – Monroe
+                  </li>
+                  <li>
+                    Syracuse – Onondaga
+                  </li>
+                </ul>
+              </p>
+
+              <h3>
+                Source State Group
+              </h3>
+              <p>
+                FFL_state_name was grouped into those FFLs located in New York State (“In-State”), out of New York State (“Out-of-State”), and blank values (“Unknown”).
+              </p>
+
+              <h3>
+                Iron Pipeline
+              </h3>
+              <p>
+                Unless otherwise noted, consists of guns sold by a dealer (FFL) located in Pennsylvania, Virginia, North Carolina, South Carolina, Georgia, and Florida.
+              </p>
+
+              <h3>
+                Out-of-State Recoveries
+              </h3>
+              <p>
+                  A count of the recovered firearm when the <code>[FFL STATE NAME]</code> was not null or not equal to New York State.
+                  <pre style="margin: 0px 50px;"><code>IF [FFL STATE NAME] &lt;&gt; "NEW YORK"
+    AND [FFL STATE NAME] &lt;&gt; "UNKNOWN" THEN 1
+    ELSE 0
+    END
+  </code></pre>
+              </p>
+
+              <h3>
+                % Out-of-State
+              </h3>
+              <p>
+                Total <code>[Out of State Recoveries]</code> divided by <code>[Total Recovered Guns]</code> where the <code>[FFL_state_name]</code> is known. This calculation <em>does not</em> include the 12% of guns where <code>[FFL_state_name]</code> is not known.
+                <pre style="margin: 0px 50px;"><code>SUM([OUT OF STATE RECOVERIES]) /
+    TOTAL(COUNTD(
+    IF [FFL STATE NAME]&lt;&gt;'UNKNOWN' 
+    THEN [ID] 
+    ELSE NULL 
+    END))
+  </code></pre>
+              </p>
+
+              <h3>
+                Handgun Set
+              </h3>
+              <p>
+                Includes all firearm recoveries where <code>[weapon_type]</code> was equal to pistol (“P”), derringer (“PD”), or revolver (“PR”).
+              </p>
+
+              <h3>
+                Number of Handguns
+              </h3>
+              <p>
+                A count of the recovered firearm when the firearm was in the Handgun Set, or when <code>[weapon_type]</code> was equal to pistol (“P”), derringer (“PD”), or revolver (“PR”).
+                <pre style="margin: 0px 50px;"><code>IF [HANDGUN SET] = TRUE THEN 1 ELSE 0 END</code></pre>
+              </p>
+
+              <h3>
+                % Handguns
+              </h3>
+              <p>
+                The proportion of the total number of guns that are handguns.
+                <pre style="margin: 0px 50px;"><code> [NUMBER OF HANDGUNS] / [TOTAL RECOVERED GUNS]</code></pre>
+              </p>
+              <h3>
+                Time-to-Crime (Months)
+              </h3>
+              <p>
+                The difference between the recovery date and the last recorded purchase date, in months.
+                <pre style="margin: 0px 50px;"><code>(([RECOVERY_DATE] - [PURCHASE_DATE]) /365) * 12</code></pre>
+              </p>
+
+              <h3>
+                Time-to-Crime (Years)
+              </h3>
+              <p>
+                The difference between the recovery date and the last recorded purchase date, in years.
+                <pre style="margin: 0px 50px"><code>(([RECOVERY_DATE] - [PURCHASE_DATE]) /365)</code></pre>
+              </p>
+
+              <h3>
+                Time-to-Crime (Years) Bin
+              </h3>
+              <p>
+                Total Recovered Guns for the whole value range of <code>[Time to Crime (Years)]</code>.
+              </p>
+
+              <h3>
+                Short Time-to-Crime Recoveries
+              </h3>
+              <p>
+                Guns with a time-to-crime of less than three years.
+                <pre style="margin: 0px 50px"><code>IF [TIME TO CRIME (YEARS)] &lt; 3 
+    THEN ID
+    ELSE NULL 
+    END
+  </code></pre>
+              </p>
+
+              <h3>
+                % Low Time-to-Crime Recoveries
+              </h3>
+              <p>
+                The proportion of short time-to-crime recoveries compared to all recoveries with a known time-to-crime.
+                  <pre style="margin: 0px 50px"><code>[SHORT TIME-TO-CRIME RECOVERIES] / 
+    COUNTD(IF [TIME TO CRIME(YEARS)] &gt;= 0 
+    THEN [ID] ELSE NULL END)
+  </code></pre>
+              </p>
+
+              <h3>
+                Purchaser Equals Possessor Total
+              </h3>
+              <p>
+                Adds the three columns <code>[purchaser_possessor_same_date_of_birth]</code>, <code>[purchaser_possessor_same_last_first_name]</code>, and <code>[purchaser_possessor_same_street_address]</code>.
+                <pre style="margin: 0px 50px"><code>IFNULL([PURCHASER &amp; POSSESSOR - SAME (LAST, FIRST) NAME],0)
+    +IFNULL([PURCHASER &amp; POSSESSOR &mdash; SAME DATE OF BIRTH],0)
+    +IFNULL([PURCHASER &amp; POSSESSOR &mdash; SAME STREET ADDRESS],0)
+  </code></pre>
+              </p>
+
+              <h3>
+                Unrecorded Gun Transaction
+              </h3>
+              <p>
+                If any of <code>[purchaser_possessor_same_date_of_birth]</code>, <code>[purchaser_possessor_same_last_first_name]</code>, and <code>[purchaser_possessor_same_street_address]</code> are not null, then the possessor of the firearm is considered to be the last recorded purchaser of the firearm. Mathematically, if the Purchaser Equals Possessor Total is greater than zero, then the possessor of the firearm is considered to be the last recorded purchaser of the firearm.
+                <pre style="margin:0px 50px"><code>IF [PURCHASER EQUALS POSSESSOR TOTAL] &gt; 0 THEN 0 ELSE 1 END</code></pre>
+              </p>
+
+              <h3>
+                % Unrecorded Gun Transactions
+              </h3>
+              <p>
+                Proportion of total guns that have an unrecorded gun transaction.
+                <pre style="margin:0px 50px"><code>SUM([UNRECORDED GUN TRANSACTION]) / [TOTAL RECOVERED GUNS]</code></pre>
+              </p>
+
+              <h3>
+                Time-to-Crime Index
+              </h3>
+              <p>
+                Indexes <code>Time to Crime (Months)</code> against 600 months (50 years). Any gun with a <code>Time to Crime (Months)</code> greater than 50 years is assigned a <code>Time to Crime (Months)</code> of 600 months or a Time-to-Crime Index of zero. Any gun with a <code>Time to Crime (Months)</code> less than 0, likely occurring from data entry errors, is marked as null. All other values between 0 and 600 are divided by 600.
+                <pre style="margin: 0px 50px;"><code>IF [TIME TO CRIME (MONTHS)] &gt;= 600 THEN 0
+    ELSEIF [TIME TO CRIME (MONTHS)] &lt; 0 THEN NULL
+    ELSEIF [TIME TO CRIME (MONTHS)] &gt;= 0
+        AND [TIME TO CRIME (MONTHS)] &lt; 600
+        THEN ((600-([TIME TO CRIME (MONTHS)]))/600)
+    END
+  </code></pre>
+              </p>
+
+              <h3>
+                Trafficking Index
+              </h3>
+              <p>
+                Assigns weights to and adds Time-to-Crime Index, Unrecorded Gun Transactions, and Out-of-state Recoveries. The total value ranges between 0 (lowest) and 100 (highest).
+                <pre style="margin: 0px 50px;"><code>(.80 * [TIME TO CRIME INDEX] 
+    + .10 * [UNRECORDED GUN TRANSACTION] 
+    + .10 * [OUT-OF-STATERECOVERIES])*100
+  </code></pre>
+              </p>
+
+              <h3>
+                Likely-Trafficked Gun
+              </h3>
+              <p>
+                All guns with a trafficking index greater than or equal to 90. The term “recently trafficked” is synonymous with likely-trafficked and the two definitions are used interchangeably throughout the report.
+                <pre style="margin: 0px 50px;"><code>IF [TRAFFICKING INDEX] &gt;= 90 THEN [ID] ELSE NULL END</code></pre>
+              </p>
+
+              <h3>
+                % Likely-Trafficked Guns
+              </h3>
+              <p>
+                The proportion of guns that have a trafficking index greater than or equal to 90 where FFL_state_name and time-to-crime is known.
+                <pre style="margin: 0px 50px;"><code>[LIKELY TRAFFICKED GUN] /
+    COUNTD(IF [FFL STATE NAME]&lt;&gt;'UNKNOWN' 
+    AND [TIME TO CRIME (YEARS)]>=0 
+    THEN [ID] 
+    ELSE NULL END)
+  </code></pre>
+              </p>
+
+              <h3>
+                Recoveries Per 100,000 People
+              </h3>
+              <p>
+                This calculation requires a data blend of two data sources in Tableau &mdash; firearm recoveries and U.S. Census data. NYAG downloaded United States Census Bureau Annual Estimates of the Resident Population for each New York State county from 2010 through 2015. Population and recovery data is joined where U.S. County Name is equal to the <code>[recovery_county]</code>. For a given year, this field takes the total number of recoveries for a given county divided by the population of that county within that year. If no <code>[recovery_county]</code> is selected, then the population for New York State is used. If no year or multiple years are selected, then the average population of 2010-2015 is used.
+                <pre style="margin: 0px 50px;"><code>CASE ATTR([YEAR])
+      WHEN '2010' THEN (SUM([NUMBER OF RECOVERIES])/[POPULATION].[POPULATION])*100000
+      WHEN '2011' THEN (SUM([NUMBER OF RECOVERIES])/[POPULATION].[POPULATION])*100000
+      WHEN '2012' THEN (SUM([NUMBER OF RECOVERIES])/[POPULATION].[POPULATION])*100000
+      WHEN '2013' THEN (SUM([NUMBER OF RECOVERIES])/[POPULATION].[POPULATION])*100000
+      WHEN '2014' THEN (SUM([NUMBER OF RECOVERIES])/[POPULATION].[POPULATION])*100000
+      WHEN '2015' THEN (SUM([NUMBER OF RECOVERIES])/[POPULATION].[POPULATION])*100000
+      ELSE ((SUM([NUMBER OF RECOVERIES])/COUNTD([YEAR]))/[POPULATION].[POPULATION])*100000
+    END
+  </code></pre>
+            </p>
+
+            <p>
+                For the above calculation, the variable <code>[POPULATION].[POPULATION]</code> is determined by the following formula:
+                <pre style="margin: 0px 50px;"><code>IF ATTR([COUNTY])=ATTR([ATF SUMMARY DATA].[RECOVERY_COUNTY])
+    AND TOTAL(SUM([ATF SUMMARY DATA].[NUMBER OF RECOVERIES]))>1
+    THEN
+        CASE ATTR([ATF SUMMARY DATA].[YEAR]) WHEN 
+            '2010' THEN [POP 2010] WHEN
+            '2011' THEN [POP 2011] WHEN
+            '2012' THEN [POP 2012] WHEN
+            '2013' THEN [POP 2013] WHEN
+            '2014' THEN [POP 2014] WHEN
+            '2015' THEN [POP 2015]
+        ELSE
+            (POP 2010]/ +
+            [POP 2011]/ +
+            [POP 2012]/ +
+            [POP 2013]/ +
+            [POP 2014]/ +
+            [POP 2015]/)/6
+        END
+
+    ELSE
+        (CASE ATTR([ATF SUMMARY DATA].[YEAR]) WHEN
+            '2010' THEN 19402920 WHEN
+            '2011' THEN 19523202 WHEN
+            '2012' THEN 19606981 WHEN
+            '2013' THEN 19691032 WHEN
+            '2014' THEN 19748858 WHEN
+            '2015' THEN 19795791 ELSE 19628131
+        END)
+    END
+  </code></pre>
+            </p>
+        </div>
+
+
+        <!-- subsection divider line -->
+          <div class='row'>
+            <div class='one-third column offset-by-one-third column'>
+              <hr />
+            </div>
+          </div>
+
+        <!--  FOOTNOTES  -->
+          <div class="row" >
+            <h2>Footnotes</h2>
+            <div class="row" id='footnotes'>
+              <!-- SECTION 1 NOTES -->
+                <!-- background intro notes -->
+                  <p id="homicideFN">
+                    <a href="#homicideTXT">1.</a> Kochanek et al., National Vital Statistics Reports: <em>Deaths: Final Data for 2014</em>, Ctrs. for Disease Control &amp; Prevention 41 tbl.10 (2016), <a href="http://www.cdc.gov/nchs/data/nvsr/nvsr65/nvsr65_04.pdf">[link]</a>
+                  </p>
+                  <p id="octfTakedownFN">
+                    <a href="#octfTakedownTXT">2.</a> Press Release, Office of the New York Attorney General, A.G. Schneiderman Announces 11 Year Jail Sentence Of Defendant Convicted For Illegally Trafficking Untraceable 'Ghost Guns' (Apr. 18, 2016) <a href="http://www.ag.ny.gov/press-release/ag-schneiderman-announces-11-year-jail-sentence-defendant-convicted-illegally">[link]</a>, Press Release, Office of the New York Attorney General, A.G. Schneiderman &amp; Commissioner Bratton Announce Takedown Of Brooklyn-Based Gun Trafficking Ring. (Nov. 19, 2014). <a href="http://www.ag.ny.gov/press-release/ag-schneiderman-commissioner-bratton-announce-takedown-brooklyn-based-gun-trafficking">[link]</a>
+                  </p>
+                  <p id='TiahrtIntroFN'>
+                    <a href="#TiahrtIntroTXT">3.</a> <em>See</em> Consolidated and Further Continuing Appropriations Act of 2012, PL 112-55, 125 Stat. 609 (2011).
+                  </p>
+                <!-- GUN SAFETY IS A STATE'S RIGHT -->
+                  <p id='GunControlLawsFN'>
+                    <a href='#GunControlLawsTXT'>4.</a> <em>See Gun Control Act of 1968, 18 U.S.C. &sect; 921 (1968).</em>
+                  </p>
+                  <p id="fflFN">
+                    <a href="#fflTXT">5.</a> <em>See Huddleston v. United States, 415 U. S. 814, 825 (1974)</em> (“[T]he focus of the federal scheme,” in controlling access to weapons, “is the federally licensed firearms dealer”).
+                  </p>
+                  <p id="federalstateFN">
+                    <a href="#federalstateTXT">6.</a> <em>See</em> 18 U.S.C. &sect; 921; <em>Huddleston</em>, 415 U.S. at 825.</em>
+                  </p>
+                  <p id="ProhibitedPersonsFN">
+                    <a href="#ProhibitedPersonsTXT">7.</a> <em>See</em> 18 U.S.C. &sect; 922(d).
+                  </p>
+                  <p id='disclosuresFN'>
+                    <a href='#disclosuresTXT'>8.</a> <em>See</em> Firearms Transaction Record, 27 C.F.R. &sect; 478.124 (2012).
+                  </p>
+                  <p id="federalBGCheckFN">
+                    <a href="#federalBGCheckTXT">9.</a> Pursuant to the permanent provisions of the Brady Handgun Violence Prevention Act of 1993, FFLs must perform background checks on prospective firearms purchasers to ensure that the firearm transfer would not violate federal, state or local law. <em>See 18 U.S.C. &sect; 922(s).</em>
+                  </p>
+                  <p id="interstatesalesFN">
+                    <a href="#interstatesalesTXT">10.</a> 18 U.S.C. &sect;&sect; 922(a)(2), (b)(2), (b)(3). In fact, 18 U.S.C. &sect;922(b)(3) prohibits FFLs from selling a firearm to a person the FFL has reasonable cause to believe does not reside in the State in which the FFL is located, except that an FFL may make an in person sale of a rifle or shotgun to a person living in a different state, except where that state’s laws prohibit such a transaction.
+                  </p>
+                  <p id='ATFreport2000FN'>
+                    <a href='#ATFreport2000TXT'>11.</a> <em>See Bureau Of Alcohol, Tobacco Firearms &amp; Explosives, U.S. Dep’t Of Treasury, Following The Gun: Enforcing Federal Laws Against Firearms Traffickers 4 (2000)</em> [hereinafter "Following the Gun"].
+                  </p>
+                  <p id="SAFEActFN">
+                    <a href="#SAFEActTXT">12.</a> <em>N.Y. Penal Law &sect; 265 (Consol. 2016).</em>
+                  </p>
+                  <p id='gunshowFN'>
+                    <a href="#gunshowTXT">13.</a> <em>N.Y. Gen. Bus. Law &sect;&sect;897, 898 (Consol. 2016).</em>
+                  </p>
+                  <p id="guncrimesFN">
+                    <a href="#guncrimesTXT">14.</a> Handguns are the firearm of choice among violent criminals. Over two-thirds of homicides are committed with firearms, of which over 70% are handguns. Over 88% of non-fatal, gun-involved violence is committed with a handgun. <em>Michael Planty &amp; Jennifer L. Truman, Bureau Of Justice Statistics, Office Of Justice Programs, U.S. Dep’t Of Justice, Firearm Violence, 1993-2011, at 3 tbl. 3 (2013).</em> <a href="http://www.bjs.gov/content/pub/pdf/fv9311.pdf">[link]</a>
+                  </p>
+                  <p id="bgcheckrulesFN">
+                    <a href="#bgcheckrulesTXT">15.</a> <em>N.Y. Penal Law &sect; 400.01.</em> (Consol. 2016); New York State Police Form PPB-3 Pistol/Revolver License Application <a href="http://troopers.ny.gov/firearms/PPB-3.pdf">[link]</a> 
+                  </p>
+                  <p id="hglicensesFN">
+                    <a href="#hglicensesTXT">16.</a> <em>N.Y. Penal Law &sect;&sect; 400.02, 400.10 (Consol. 2016).</em> New York City additionally requires a similar process prior to lawful possession of rifles and shotguns. Administrative Code of the City of N.Y. &sect; 10-303; Rules of the City of New York &sect;&sect; 1-03, 3-02.
+                  </p>
+                  <p id="traceRequirementFN">
+                    <a href="#traceRequirementTXT">17.</a> N.Y. Exec. Law &sect; 230(5) (Consol. 2016) (“Gun Trafficking Interdiction Program”).
+                  </p>
+                <!-- FIREARMS TRACING -->
+                  <p id="tracingmandateFN">
+                    <a href="#tracingmandateTXT">18.</a>  Bureau of Alcohol, Tobacco, Firearms &amp; Explosives, U.S. Dep’t of Treasury, National Tracing Center Fact Sheet (Mar. 2016) (“Pursuant to the Gun Control Act (GCA) of 1968, the U.S. attorney general is authorized to administer firearms tracing. The attorney general has delegated ATF the sole federal agency authorized to trace firearms.”). <a href="https://www.atf.gov/resource-center/fact-sheet/fact-sheet-national-tracing-center">[link]</a>
+                  </p>
+                  <p id="nodatabaseFN">
+                    <a href="#nodatabaseTXT">19.</a> <em>See</em> 18 U.S.C. &sect; 926 (stating, in chapter discussing the Attorney General’s power to promulgate rules and regulations, “[n]o such rule or regulation prescribed after the date of the enactment of the Firearms Owners’ Protection Act [of 1986] may require that records required to be maintained under this chapter or any portion of the contents of such records, be recorded at or transferred to a facility owned, managed, or controlled by the United States or any State or any political subdivision thereof, nor that any system of registration of firearms, firearms owners, or firearms transactions or dispositions be established.”).  In addition, the Tiahrt Amendments prohibit ATF from demanding a physical inventory of gun dealers or from electronically cataloguing the records of closed gun dealers, who must turn in their federal forms to ATF pursuant to 18 U.S.C. &sect; 923(g)(4). See Consolidated and Further Continuing Appropriations Act of 2012, PL 112-55, 125 Stat. 609 (2011).
+                  </p>
+                  <p id='diverted-traffickedFN'>
+                    <a href="#diverted-traffickedTXT">20.</a> <em>Bureau Of Justice Assistance, Office Of Justice Programs, U.S. Dep’t Of Justice, Reducing Illegal Firearms Trafficking: Promising Practices And Lessons Learned</em> (2000) (“The role that firearms traffickers play in this flow of firearms cannot be underestimated. Some unlicensed firearms sellers purchase firearms in one state, then transport them to their state of residence and sell, trade, or distribute the firearms to criminal associates. Firearms trafficking, however, is not limited to unlicensed sellers—it also is practiced by unscrupulous federal firearms licensees (FFLs) who knowingly sell firearms to prohibited purchasers (such as convicted felons and drug dealers). In addition, there are many “straw purchasers” who buy firearms on behalf of persons who would be blocked by Brady checks from buying guns themselves. There are also those who steal guns and traffic in stolen firearms.”). Most “diverted” firearms are also “trafficked,” though that term is narrower and would not include, for instance, theft of a firearm for personal, criminal use. See <em>Following The Gun</em>, supra note 11, at 3. <a href="https://www.ncjrs.gov/pdffiles1/bja/180752.pdf">[link]</a>
+                  </p>
+                  <p id='ATFFactFN'>
+                    <a href='#ATFFactTXT'>21.</a> <em>See</em> Bureau of Alcohol, Tobacco, Firearms &amp; Explosives, supra note 18; Presidential Memorandum &mdash; Tracing of Firearms in Connection with Criminal Investigations, 78 Fed. Reg. 4301 (Jan. 16, 2013).
+                  </p>
+                <!-- TRAFFICKING INDICATORS -->
+                  <p id="lowTTCFN">
+                    <a href="#lowTTCTXT">22.</a> <em>See Following The Gun,</em> supra note 11, at 25 (2000) (“ATF’s trace analysis in 27 cities suggests that up to 43 percent of traced firearms are new guns that have moved rapidly from the shelf of an FFL to recovery by law enforcement in three years or less, and, therefore, may have been trafficked.”).
+                  </p>
+                  <p id="oldergunsFN">
+                    <a href="#oldergunsTXT">23.</a> <em>Id.</em> at 25 (“Focusing exclusively on new guns likely underestimates the true extent of gun trafficking.... While a trace of a crime gun may reveal that it was first sold at retail ten years before its recovery in crime, it is nevertheless possible that it was trafficked.... ATF investigative experience suggests that trafficking in secondhand firearms is indeed a significant crime and public safety problem. While new firearms figured more prominently, new and secondhand guns were trafficked together in about one third of the investigations.”).
+                  </p>
+              <!-- SECTION 2 NOTES -->
+                <!-- KEY STATS -->
+                  <p id='ny2015recoveriesFN'>
+                    <a href="#ny2015recoveriesTXT">24.</a> ATF reports New York’s recoveries in 2015 to be 7,803. <em>Office Of Strategic Intelligence And Information, Bureau Of Alcohol, Tobacco, Firearms &amp; Explosives, ATF New York, January 1, 2015 – December 31, 2015, at 3 (2015).</em> <a href="https://www.atf.gov/docs/163552-nyatfwebsite15pdf/download">[link]</a>
+                  </p>
+                  <p id="natlPerCapFN">
+                    <a href="#natlPerCapTXT">25.</a> Total recoveries for the United States obtained through <em>Bureau Of Alcohol, Tobacco, Firearms &amp; Explosives, Firearm Types Recovered And Traced In The United States And Territories (2015).</em><a href="https://www.atf.gov/docs/finalweapontype-cy2015xlsx/download">[link]</a> Recoveries from New York State are from the data provided by ATF to the NYAG. All population estimates are based off of <em>U.S. Census Bureau, Population Division, Annual Estimates Of The Resident Population: April 1, 2010 To July 1, 2015 (2015).</em> <a href="https://www.census.gov/quickfacts/table/PST045215/00,36">[link]</a>
+                  </p>
+                  <p id="national_traceFN">
+                    <a href="#national_traceTXT">26.</a> ATF reports New York’s out-of-state percentage as 73%. The difference is that ATF is only counting guns traced to a state of purchase and a purchaser. When expressing percentage of purchases out-of-state in our data, we omit guns that have no recorded state of purchase, but do not exclude guns with incomplete purchaser information as we ATF did not provide us with that information. See <em>Office Of Strategic Intelligence And Information,</em> supra note 24.
+                  </p>
+                  <p id="national_traceFN-again">
+                    <a href="#national_traceTXT-again">27.</a> Again, because ATF in its public reports only count gun with a successful trace to a state of purchase, purchaser, and recorded date of purchase, ATF’s calculated percentage of out-of-state low time-to-crime guns for New York is 76%. Id.
+                  </p>
+                <!-- CRIME GUN MARKETS -->
+                  <p id="hudsonvalley_countiesFN">
+                    <a href="#hudsonvalley_countiesTXT">28.</a> Includes the counties of Dutchess, Orange, Putnam, Rockland and Westchester.
+                  </p>
+                  <p id="capitol-region-countiesFN">
+                    <a href="#capitol-region-countiesTXT">29.</a> Includes the counties of Albany, Saratoga, Schenectady, Rensselear.
+                  </p>
+                <!-- IRON PIPELINE STATES -->
+                  <p id='ironpipelineFN'>
+                    <a href='#ironpipelineTXT'>30.</a> <em>Mayors Against Illegal Guns, Trace The Guns: The Link Between Gun Laws And Interstate Gun Trafficking 10-15 (2010).</em> <a href="https://tracetheguns.org/report.pdf">[link]</a>
+                  </p>
+                  <p id="ironpipelinenameFN">
+                    <a href="#ironpipelinenameTXT">31.</a> Press Release, N.Y.P.D. <em>NYPD Firearms Investigation Unit Arrests Gun Trafficker for the Illegal Sale of 30 Firearms</em>, (Oct. 16, 2013). <a href="http://www.nyc.gov/html/nypd/html/pr/pr_2013_10_16_brooklyn_gun_dealer_indicted.shtml">[link]</a>
+                  </p>
+                <!-- MAJOR EXPORTERS (SWOOPY MAP SECTION) -->
+                  <p id="netexportstatesFN">
+                    <a href="#netexportstatesTXT">32.</a> <em>See</em> generally <em>Bureau Of Alcohol, Tobacco, Firearms &amp; Explosives, Firearms Trace Data – 2015 (2016).</em> <a href="https://www.atf.gov/about/firearms-trace-data-2015">[link]</a>
+                  </p>
+                  <p id="gunlawscoreFN">
+                    <a href="#gunlawscoreTXT">33.</a> <em>See Law Center To Prevent Gun Violence, 2015 Gun Law State Scorecard (2015) Mayors Against Illegal Guns</em>, supra note 30, at 10-15. <a href="http://gunlawscorecard.org/">[link]</a>
+                  </p>
+                  <p id='OCTFcasesFN'>
+                    <a href="#OCTFcasesTXT">34.</a> Press Release, Office of the New York Attorney General, A.G. Schneiderman Announces Guilty Pleas Of Reputed Gang Members Accused Of Operating Gun Trafficking Ring (June 1, 2016). <a href="http://ag.ny.gov/press-release/ag-schneiderman-announces-guilty-pleas-reputed-gang-members-accused-operating-gun">[link]</a>
+                  </p>
+                  <p id="PAlawFN">
+                    <a href="#export_states">35.</a> <em>18 PA. Cons. Stat. &sect; 6111(F)(2) (2016)</em>
+                  </p>
+                  <p id="VAlaw1FN">
+                    <a href="#export_states">36.</a> <em>VA. Code Ann. &sect; 18.2-308.2:2 (2016)</em>
+                  </p>
+                  <p id="VAlaw2FN">
+                    <a href="#export_states">37.</a> <em>VA. Code Ann. &sect; 18.2-308.2:1 (2016).</em>
+                  </p>
+                  <p id="NClawFN">
+                    <a href="#export_states">38.</a> <em>N.C. Gen. Stat. &sect; 14-403 (2016).</em>
+                  </p>
+                  <p id="NClawFN2">
+                    <a href="#export_states">39.</a> <em>N.C. Gen. Stat. &sect; 14-404(A)(1) (2016).</em>
+                  </p>
+                  <p id="NClawFN3">
+                    <a href="#export_states">40.</a> <em>N.C. Gen. Stat. &sect; 14-404(A)(2) (2016).</em>
+                  </p>
+                  <p id="NClawFN4">
+                    <a href="#export_states">41.</a> <em>Fed. Bureau Of Investigation, National Instant Criminal Background Check System Operations – 2015, at 3 (2015).</em> <a href="https://www.fbi.gov/file-repository/2015-nics-ops-report.pdf/view">[link]</a>
+                  </p>
+                  <p id="SClawFN">
+                    <a href="#export_states">42.</a> Id.
+                  </p>
+                  <p id="SClawFN2">
+                    <a href="#export_states">43.</a> 18 U.S.C. &sect; 922(t)(3).
+                  </p>
+                  <p id="GAlawFN">
+                    <a href="#export_states">44.</a> <em>Fed. Bureau Of Investigation, supra note 41; 18 U.S.C. &sect; 922(t)(3).</em>
+                  </p>
+                  <p id="FLlawFN">
+                    <a href="#export_states">45.</a> <em>Criminal Justice Information Services Division, Bureau Of Alcohol, Tobacco, Firearms &amp; Explosives, U.S. Dep’t. Of Justice, Brady Law: Permanent Brady Permit Chart (Jun. 10, 2014).</em> <a href="https://www.atf.gov/rules-and-regulations/permanent-brady-permit-chart">[link]</a>
+                  </p>
+                  <p id="OHlawFN">
+                    <a href="#export_states">46.</a> <em>Ohio State Attorney General’s Office, Ohio’s Concealed Carry Laws And License Application (2015)</em>. <a href="http://www.ohioattorneygeneral.gov/Law-Enforcement/Concealed-Carry/Concealed-Carry-Laws-Manual-(PDF)">[link]</a>
+                  </p>
+              <!-- SECTION 3: RECOMMENDATIONS -->
+                <!-- NEW YORK -->
+                  <p id="NYtraffickingLawFN">
+                    <a href="#NYtraffickingLawTXT">47.</a> <em>N.Y. Penal Law &sect; 265.04</em> (Consol. 2016).
+                  </p>
+              <!-- METHODOLOGY NOTES -->
+                <!-- DATA COLLECTION -->
+                  <p id="ATFdatacaveatsFN">
+                    <a href="#ATFdatacaveatsTXT">48.</a> Letter from Matthew Myerson, Division Counsel, New York, Bureau of Alcohol, Tobacco, Firearms &amp; Explosives, to Nicholas Suplina, Senior Advisor and Special Counsel, Office of the New York Attorney General (June 13, 2016) (on file with author).
+                  </p>
+                  <p id='censuspopFN'>
+                    <a href="#censuspopTXT">49.</a> <em>U.S. Census Bureau, Population Division, Annual Estimates Of The Resident Population: April 1, 2010 To July 1, 2015 (Dec. 2015)</em> <a href="http://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=PEP_2015_PEPANNRES&prodType=table">[link]</a>
+                  </p>
+                <!-- DATA QUALITY -->
+                  <p id='pur_pos_same_dobFN'>
+                    <a href="#pur_pos_samedobTXT">50.</a> ATF Letter, supra note 48 (“Selections were automatically computed for identical information in the Date of Birth (DOB), Name &amp; Street Address fields (denoted by a 1).”).
+                  </p>
+                  <p id="pur_pos_same_nameFN">
+                    <a href="#pur_pos_same_nameTXT">51.</a> Id. (“The last and first name fields were combined to express a combination of names (last, first) in one field.”).
+                  </p>
+                  <p id="pur_pos_same_addrFN">
+                    <a href="#pur_pos_same_addrTXT">52.</a> Id. (“The individual street fields were combined to determine a street address. Please note, some entries may not have automatically matched due to a slight variations (i.e. street direction, suffix abbreviations, spelling, spacing, etc.).”)
+                  </p>
+                <!-- DATA CLEANING -->
+                  <p id="twocountyzipsFN">
+                    <a href="#twocountyzipsTXT">53.</a> Seven New York state zip codes spanned multiple counties: 14726, 12944, 14011, 14560, 14081, 12083, and 12566. These records were assigned to the county which covered the majority of the zip code region.
+                  </p>
+                <!-- TRAFFICKING LIKELIHOOD ASSESSMENT -->
+                  <p id="50yearcutoffFN">
+                    <a href="#50yearcutoffTXT">54.</a> Only 34 recoveries had a time-to-crime longer than 50 years. For our purposes, there was little difference between a 50 year-old gun and a gun older than 50 years. To simplify the calculations of the time-to-crime score, all guns over 50 years were treated as 50 years-old.
+                  </p>
+            </div>
+          </div>
+        <!-- subsection divider line -->
+          <div class='row'>
+            <div class='one-third column offset-by-one-third column'>
+              <hr />
+            </div>
+          </div>
+
+        <!-- OAG SEAL -->
+          <div class='row'>
+            <div class='one-third column offset-by-one-third column'>
+              <img src="images/AG_Seal-CMYK-Vector-grayscale.png" alt="Seal of the Attorney General of New York" />
+            </div>
+          </div>
+      <!-- closing chapter container -->
+      </div>
+  <!-- ======= SCRIPTS ========= -->
+    <!-- Libraries -->
+      <script src="js/utils/d3.v3.min.js"></script>
+      <script src="js/utils/topojson.v1.min.js"></script>
+      <script src='js/utils/graph-scroll.js'></script>
+      <script src="js/utils/d3-tip.js"></script>
+      <script src='js/utils/d3-legend.min.js'></script> 
+      <script src='js/utils/nv.d3.min.js'></script>
+      <script src='js/utils/jquery-3.1.1.min.js'></script>
+
+    <!-- custom scripts-->
+      <script src='js/section_scroller_light.js'></script>
+      <script src="js/landing-textonly-fade.js"></script>
+        <noscript>
+          <p>
+            In the United States, virtually all firearms, but when they are diverted to criminal use and recovered by law enforcement, they become crime guns.
+          </p>
+          <p>
+            Here's what we discovered about these dangerous firearms in New York.
+          </p>
+          <p>
+            New York law enforcement recovered 52,915 crime guns between 2010-2015.  
+          </p>
+          <p>
+            About 90% of these guns were recovered in seven markets New York City, Long Island, Lower Hudson Valley, Capital Region, Syracuse, Rochester and Buffalo.
+          </p>
+          <p>
+            About 75% of all recovered guns were handguns, the weapon of choice for violent criminals.
+          </p>
+          <p>
+            Only 14% of handguns originated in New York. But an alarming 86% of handguns were originally purchased out-of-state and brought to New York before being used in a crime.
+          </p>
+          <p>
+            In fact, more than half of all gun recoveries in New York were out-of-state handguns. Most of these guns began in just six states with weak gun laws – the states along I-95 that make up the Iron Pipeline.
+          </p>
+          <p>
+            Iron Pipeline states were responsible for 71% of the handguns that we identified as recently trafficked into New York.
+          </p>
+          <p>
+            Critics of gun regulations often say that criminals don’t obey the law, so why bother?
+          </p>
+          <p>
+            The data refutes that argument and shows that New York's laws requiring universal background checks and permits for handguns are working to keep criminals from purchasing these weapons within the State.
+          </p>
+          <p>
+            But with ready access to guns in states without requirements for handgun licenses or background checks on private sales, gun traffickers easily purchase and import guns into New York.
+          </p>
+          <p>
+            Armed with data on crime guns, law enforcement can identify the most dangerous guns on our streets and better determine the laws and strategies needed to combat gun violence.
+          </p>
+        </noscript>
+      <script src='js/recovery_dotmap.js'></script>
+        <noscript>
+          <h1>
+            New York Has Seven Distinct Markets For Crime Guns
+          </h1>
+          <h1>
+            New York State
+          </h1>
+            <h2>
+              Total Recovered Guns:
+            </h2>
+              <p>
+                52,915
+              </p>
+            <h2>
+              Percent Originating Out-of-State:
+            </h2>
+              <p>
+                74%
+              </p>
+            <h2>
+              Trafficking Index:
+            </h2>
+              <p>
+                73
+              </p>
+            <h2>
+              Total Recovered Handguns:
+            </h2>
+              <p>
+                39,491
+              </p>
+            <p>
+              90% of all crime guns in New York were recovered from these seven markets. These areas also account for 90% or more of all handgun recoveries, low time-to-crime guns, low time-to-crime handguns, and likely-trafficked guns. Of the 47,337 guns recovered from these markets, over three quarters (36,437) were handguns. Of the 27,721 guns with time-to-crime and source state information, 19% (5,208) were low time-to-crime guns and 35% (9,302) were likely purchased to be illegally diverted while 21% (5,793) were likely recently trafficked.
+            </p>
+
+          <h1>
+            New York City
+          </h1>
+            <h2>
+              Total Recovered Guns:
+            </h2>
+              <p>
+                25,799
+              </p>
+            <h2>
+              Percent Originating Out-of-State:
+            </h2>
+              <p>
+                87%
+              </p>
+            <h2>
+              Trafficking Index:
+            </h2>
+              <p>
+                75
+              </p>
+            <h2>
+              Total Recovered Handguns:
+            </h2>
+              <p>
+                22,119
+              </p>
+            <p>
+              The five counties of New York City represented nearly half of all of New York’s crime gun recoveries (49%) and low time-to-crime recoveries (49%). New York City leads the rest of the State in the number and proportion of total guns that were handguns, originated out-of-state, and were likely-trafficked. The vast majority (86%) of New York City’s recovered guns were handguns, besting the statewide average of 75% by more than 10%. Likely due to its strict gun laws – the City requires permits for hand guns and long guns – New York City leads other markets with 87% of all gun and 92% of handgun recoveries originating out-of-state. With an average trafficking index of 75, about 26% of NYC’s recoveries (4,216 guns) were likely-trafficked.
+            </p>
+
+          <h1>
+            Long Island
+          </h1>
+            <h2>
+              Total Recovered Guns:
+            </h2>
+              <p>
+                4,844
+              </p>
+            <h2>
+              Percent Originating Out-of-State:
+            </h2>
+              <p>
+                73%
+              </p>
+            <h2>
+              Trafficking Index:              
+            </h2>
+              <p>
+                70
+              </p>
+            <h2>
+              Total Recovered Handguns:
+            </h2>
+              <p>
+                3,881
+              </p>
+            <p>
+              Nassau and Suffolk Counties combine to make the fourth largest crime gun market in the State with 4,844 recoveries or just over 9% of all recoveries. Long Island is the second largest market for handguns (3,881), and the second largest percentages of handguns (80%), guns originating out-of-state (73%) and likely-trafficked guns (17%). Long Island has the third largest number of guns that were likely-trafficked, or 17% of guns recovered within the market. Two zip codes (11550 in Hempstead and 11553 in Uniondale) accounted for almost 15% (672) of the region's recoveries and had a much higher percentage of handguns (90%) and of out-of-state recoveries (85%) than the market average.
+            </p>
+
+          <h1>
+            Lower Hudson Valley
+          </h1>
+            <h2>
+              Total Recovered Guns:
+            </h2>
+              <p>
+                2,830
+              </p>
+            <h2>
+              Percent Originating Out-of-State:
+            </h2>
+              <p>
+                70%
+              </p>
+            <h2>
+              Trafficking Index:
+            </h2>
+              <p>
+                72
+              </p>
+            <h2>
+              Total Recovered Handguns:
+            </h2>
+              <p>
+                2,202
+              </p>
+            <p>
+              The six counties comprising the Lower-Hudson Valley together had 2,830 recoveries or 5% of New York State recoveries. For its size, the Lower-Hudson Valley exhibits very similar characteristics to those recovered by law enforcement to the south in New York City. This market has the third largest proportion of recoveries that were handguns (78%) and likely-trafficked guns (16%). Approximately 70% of crime guns in this region originated outside New York State, just below statewide average. At 72, the Lower-Hudson Valley has the third highest average trafficking index of any market in the State. Just three zip codes in this region accounted for 2,764 recoveries, or over 40% of the region. These zip codes, 10701 in Yonkers (427), 12550 in Newburgh (407) and 12601 in Poughkeepsie (279) each fall along I-87.
+            </p>
+
+          <h1>
+            Albany
+          </h1>
+            <h2>
+              Total Recovered Guns:
+            </h2>
+              <p>
+                1,872
+              </p>
+            <h2>
+              Percent Originating Out-of-State:
+            </h2>
+              <p>
+                67%
+              </p>
+            <h2>
+              Trafficking Index:
+            </h2>
+              <p>
+                72
+              </p>
+            <h2>
+              Total Recovered Handguns:
+            </h2>
+              <p>
+                1,267
+              </p>
+            <p>
+              Capital Region law enforcement recovered 1,872 firearms during the five-year period (4% of all recoveries), making it the smallest of the seven regions. This market has the second highest trafficking index in the State (72) and the fourth largest percentage of trafficked guns. The Capital Region has the third largest percentage of out-of-state recoveries, with 67% of firearms originating outside New York. Of Capital Region recoveries, approximately 68% were handguns, with higher percentages of rifles (19%) and shotguns (12%) than the regions to the south. Among low time-to-crime guns, 59% were handguns, 26% were rifles, and 14% were shotguns. Approximately 21% of recoveries (211) with a known date of purchase were low time-to-crime. Zip codes in Albany (12206, 12202), Troy (12180), and East Greenbush (12061) contributed over 45% of total recoveries in the market (846 guns). In these four zip codes, 15% of recoveries were low time-to-crime, triple the percentage for the market. These four zip codes had a greater percentage of out-of-state guns (75%) than the market average (67%).
+            </p>
+
+          <h1>
+            Syracuse
+          </h1>
+            <h2>
+              Total Recovered Guns:
+            </h2>
+              <p>
+                2,267
+              </p>
+            <h2>
+              Percent Originating Out-of-State:
+            </h2>
+              <p>
+                60%
+              </p>
+            <h2>
+              Trafficking Index:
+            </h2>
+              <p>
+                70
+              </p>
+            <h2>
+              Total Recovered Handguns:
+            </h2>
+              <p>
+                1,465
+              </p>
+            <p>
+              Law enforcement recovered 2,267 guns in the area around Syracuse (Onondaga County). Nestled just south of I-90 (the New York State Thruway), which runs east to Albany and West to Buffalo, approximately 60% of the region’s guns originated in a state other than New York and 13% were likely-trafficked. 10% of recoveries in the region were low time-to-crime guns. 65% of recoveries were handguns – lower than the statewide average – with an increase in long-barrel firearms, like rifles (18%) and shotguns (17%). A quarter of the guns in this region were recovered from two zip codes - 13204 and 13205. These zip codes had a slightly higher percentage of out-of-state, low time-to-crime, and likely-trafficked guns than the region as a whole.
+            </p>
+
+          <h1>
+            Rochester
+          </h1>
+            <h2>
+              Total Recovered Guns:
+            </h2>
+              <p>
+                4,535
+              </p>
+            <h2>
+              Percent Originating Out-of-State:
+            </h2>
+              <p>
+                44%
+              </p>
+            <h2>
+              Trafficking Index:
+            </h2>
+              <p>
+                69
+              </p>
+            <h2>
+              Total Recovered Handguns:
+            </h2>
+              <p>
+                2,457
+              </p>
+              <p>
+                Rochester-area (includes Monroe County) law enforcement recovered 4,535 crime guns or 9% of all recoveries in the State. Rochester is unique among the markets with the highest percentage of low time-to-crime guns, the lowest percentage of guns originating out-of-state, and the lowest percentage of handguns compared to the State average. The market leads the State in the percentage of guns (23%) that are low time-to-crime. Only 44% of crime guns originated outside New York State – almost 30 points below the statewide average. And only 54% of Rochester’s crime guns were handguns, with shotguns and rifles making up 25% and 20% of recoveries, respectively. Monroe County had by far the highest per capita recovery rate by county of any market jurisdiction, with approximately 101 recoveries for every 100,000 people. Just one zip code in Rochester (14621) accounted for 22% of recoveries in the region. Two additional zip codes (14611 and 14609) contributed another 21% of recoveries.
+              </p>
+
+          <h1>
+            Buffalo
+          </h1>
+            <h2>
+              Total Recovered Guns:
+            </h2>
+              <p>
+                5,256
+              </p>
+            <h2>
+              Percent Originating Out-of-State:
+            </h2>
+              <p>
+                58%
+              </p>
+            <h2>
+              Trafficking Index:
+            </h2>
+              <p>
+                71
+              </p>
+            <h2>
+              Total Recovered Handguns:
+            </h2>
+              <p>
+                3,077
+              </p>
+            <p>
+              As the second largest market for crime guns in New York State, Buffalo and neighboring Niagara Falls (Erie and Niagara Counties) together recovered 5,256 crime guns or 10% of statewide recoveries. Buffalo also has the second highest number (606) of low time-to-crime recoveries and likely-trafficked guns (425). Buffalo recovered 3,077 handguns, making it the third largest market for handguns in the State, with handguns making up 59% of recoveries in the market. Erie County showed a high per capita recovery rate of 82 guns per 100,000 residents, with Niagara lower at 58 per 100,000. Five zip codes (14215, 14211, 14213, 14207, 14212) accounted for almost 50% of the region's recoveries, or 2,476 guns. These recoveries were located inor around the City of Buffalo and had a slightly higher average out-of-state percentage than the rest of the market.
+            </p>
+        </noscript>
+      <script src='js/instate_oos_toggles.js'></script>
+        <noscript>
+          <h1>
+            Variation in Out-of-State Sources by Market shows Impact of State and Local Laws
+          </h1>
+          <h1>
+            All Guns
+          </h1>
+            <table>
+              <thead>
+                <tr>
+                  <th>Market</th>
+                  <th>Percentage of Guns Bought In-State</th>
+                  <th>Percentage of Guns Bought Out-of-State</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>NY State</td>
+                  <td>26</td>
+                  <td>74</td>
+                </tr>
+                <tr>
+                  <td>NYC</td>
+                  <td>13</td>
+                  <td>87</td>
+                </tr>
+                <tr>
+                  <td>Long Island</td>
+                  <td>27</td>
+                  <td>73</td>
+                </tr>
+                <tr>
+                  <td>Lower Hudson Valley</td>
+                  <td>30</td>
+                  <td>70</td>
+                </tr>
+                <tr>
+                  <td>Capital Region</td>
+                  <td>33</td>
+                  <td>67</td>
+                </tr>
+                <tr>
+                  <td>Syracuse</td>
+                  <td>40</td>
+                  <td>60</td>
+                </tr>
+                <tr>
+                  <td>Buffalo</td>
+                  <td>42</td>
+                  <td>58</td>
+                </tr>
+                <tr>
+                  <td>Rochester</td>
+                  <td>56</td>
+                  <td>44</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              All markets in New York State obtain the majority of their crime guns from out-of-state, with the exception of Rochester. New York City, with its rigorous permitting requirements for all guns, has the highest percentage of out-of-state guns (87%). New York City is followed by Long Island and the Lower Hudson Valley, with 73% and 70% of guns originating out-of-state, respectively.
+            </p>
+
+          <h1>
+            Low Time-to-Crime Guns
+          </h1>
+            <table>
+              <thead>
+                <tr>
+                  <th>Market</th>
+                  <th>Percentage of Guns Bought In-State</th>
+                  <th>Percentage of Guns Bought Out-of-State</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>NY State</td>
+                  <td>33</td>
+                  <td>67</td>
+                </tr>
+                <tr>
+                  <td>NYC</td>
+                  <td>9</td>
+                  <td>91</td>
+                </tr>
+                <tr>
+                  <td>Long Island</td>
+                  <td>42</td>
+                  <td>58</td>
+                </tr>
+                <tr>
+                  <td>Lower Hudson Valley</td>
+                  <td>47</td>
+                  <td>53</td>
+                </tr>
+                <tr>
+                  <td>Capital Region</td>
+                  <td>48</td>
+                  <td>52</td>
+                </tr>
+                <tr>
+                  <td>Syracuse</td>
+                  <td>62</td>
+                  <td>38</td>
+                </tr>
+                <tr>
+                  <td>Buffalo</td>
+                  <td>56</td>
+                  <td>44</td>
+                </tr>
+                <tr>
+                  <td>Rochester</td>
+                  <td>78</td>
+                  <td>22</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              When looking only at low time-to-crime guns, one would expect local contributions to increase because a shorter time between purchase and recovery allows less time for a firearm to travel. This is true everywhere except New York City, which had 91% of its low time-to-crime guns originating out-of-state, a 12% jump from the out-of-state percentage for all recoveries. For low time-to-crime guns, four markets received the majority of guns from out-of-state: New York City (91%), Long Island (58%), the Lower Hudson Valley (53%), and the Capital Region (52%). Rochester’s percentage of out-of-state guns dropped considerably from 44% for all guns to 22% for low time-to-crime guns, suggesting that many guns purchased with the intent to divert to illegal use in Rochester originated in New York.
+            </p>
+
+          <h1>
+            Low Time-to-Crime Handguns
+          </h1>
+            <table>
+              <thead>
+                <tr>
+                  <th>Market</th>
+                  <th>Percentage of Guns Bought In-State</th>
+                  <th>Percentage of Guns Bought Out-of-State</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>NY State</td>
+                  <td>8</td>
+                  <td>92</td>
+                </tr>
+                <tr>
+                  <td>NYC</td>
+                  <td>6</td>
+                  <td>94</td>
+                </tr>
+                <tr>
+                  <td>Long Island</td>
+                  <td>12</td>
+                  <td>88</td>
+                </tr>
+                <tr>
+                  <td>Lower Hudson Valley</td>
+                  <td>25</td>
+                  <td>75</td>
+                </tr>
+                <tr>
+                  <td>Capital Region</td>
+                  <td>19</td>
+                  <td>81</td>
+                </tr>
+                <tr>
+                  <td>Syracuse</td>
+                  <td>30</td>
+                  <td>70</td>
+                </tr>
+                <tr>
+                  <td>Buffalo</td>
+                  <td>26</td>
+                  <td>74</td>
+                </tr>
+                <tr>
+                  <td>Rochester</td>
+                  <td>57</td>
+                  <td>43</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              If New York State’s strict handgun laws worked to prevent criminals from acquiring handguns, we’d expect to see relatively higher rates of low time-to-crime handguns originating out-of-state. We do. Notably, as compared to low time-to-crime guns generally, Rochester sees a 21% increase in out-of-state handguns to 43%, while, Buffalo, Syracuse and Capital Regions see about a 30% increase in out-of-state contributions from just reviewing low time-to-crime guns. New York City continues to lead the markets with 94% of low time-to-crime handguns originating out-of-state. In short, if you are a criminal operating in New York who wants to obtain a handgun, you are far more likely to get one from an out-of-state source than from here in New York.
+            </p>
+        </noscript>
+      <script src='js/blockmap.js'></script>
+        <noscript>
+          <h1>
+            Trafficked Guns Predominately Come from Iron Pipeline States
+          </h1>
+            <h1>
+              New York State
+            </h1>
+              <p>
+                About 70% of likely-trafficked guns recovered in New York originated in Iron Pipeline states. Approximately 95% were handguns. Virginia (15%), Georgia (13%), and Pennsylvania (13%) were the top three source states for out-of-state likely-trafficked guns.
+              </p>
+
+            <h1>
+              New York City
+            </h1>
+              <p>
+                New York City has the highest concentration of likely-trafficked guns – 4,216 – from pipeline states. Virginia leads as a source state, with 19% of recoveries, followed by Pennsylvania (13%) and Georgia (13%). Almost all guns were handguns – only 172 were not.
+              </p>
+
+            <h1>
+              Long Island
+            </h1>
+              <p>
+                Long Island shows a pattern similar to neighboring New York City for its 396 likely-trafficked guns. However, Florida tops the list of source states, with 16% of recoveries followed by Virginia (13%) and Georgia (12%). 92% of guns that were likely-trafficked to Long Island were handguns.
+              </p>
+
+            <h1>
+              Lower-Hudson Valley
+            </h1>
+              <p>
+                Lower-Hudson Valley gets most of its likely-trafficked guns from Pipeline states. The Lower-Hudson Valley follows a pattern similar to the rest of the State, with Pennsylvania (16%), Florida (13%), Virginia (12%), and Georgia (12%) topping the list of source states. 96% of guns that were likely-trafficked to the Lower-Hudson Valley were handguns.
+              </p>
+
+            <h1>
+              The Capital Region
+            </h1>
+              <p>
+                The Capital Region – which recovered only 160 likely-trafficked in the five years of data – breaks from the pattern of other markets, and includes guns from Vermont (16%) at the top of its source states. 94% of guns that were likely-trafficked to the Capital Region were handguns.
+              </p>
+
+            <h1>
+              Syracuse
+            </h1>
+              <p>
+                Syracuse saw 25% of likely-trafficked guns originate in Georgia. The remaining pipeline states contributed an additional 36% of recoveries, and Ohio another 6%. 91% of guns that were likely-trafficked to Syracuse were handguns.
+              </p>
+
+            <h1>
+              Rochester
+            </h1>
+              <p>
+                Rochester, with 165 likely-trafficked guns and the largest percentage of in-state gun contribution, still gets its likely-trafficked guns from Pipeline states. Though far lower numbers than other market jurisdictions, the same source states top the list – Georgia (20%), Florida (15%), and Pennsylvania (11%). Rochester had the lowest proportion of guns that were handguns, with 87%.
+              </p>
+
+            <h1>
+              Buffalo
+            </h1>
+              <p>
+                The Pipeline reaches as far west in New York as Buffalo-Niagara. Of its 425 likely-trafficked guns, the biggest out-of-state supplier is nearby Ohio with 19%. Following Ohio was Georgia and Pennsylvania, with 18% and 17% respectively. 94% of guns that were likely-trafficked to Buffalo were handguns.
+              </p>
+        </noscript>
+      <script src='js/export_states.js'></script>
+        <noscript>
+          <h1>
+            New York’s Gun Traffickers Choose States with Weak Gun Laws to Get their Guns
+          </h1>
+
+          <h1>
+            New York Pipeline
+          </h1>
+            <h2>
+              Total Guns to New York:
+            </h2>
+              <p>
+                18,361
+              </p>
+            <h2>
+              Percentage of Trafficked Guns to New York:
+            </h2>
+              <p>
+                76%
+              </p>
+            <h2>
+              Trafficking Index:
+            </h2>
+              <p>
+                78
+              </p>
+            <h2>
+              Handguns Sent to New York:
+            </h2>
+              <p>
+                17,085
+              </p>
+            <p>
+              New York's Pipeline, which includes Ohio, supplies a steady stream of guns to New York State. Nearly 35% of all guns and over 43% of all handguns originated in these seven states. In every state's own right, they score poorly on gun safety laws, especially those necessary to prevent illegal diversion. With easy access to New York via I-95 and I-90, gun traffickers tend to obtain guns that begin in these states. As noted, Ohio shares characteristics with the traditional Iron Pipeline states in that it has weak guns safety laws and has easy access to New York via interstate highway. For this reason and since it contributes 3% of all guns and 4% of handguns, we include it in the New York Pipeline.
+            </p>
+
+          <h1>
+            Pennsylvania
+          </h1>
+            <h2>
+              Total Guns to New York:
+            </h2>
+              <p>
+                2,843
+              </p>
+            <h2>
+              Percentage of Trafficked Guns to New York:
+            </h2>
+              <p>
+                13%
+              </p>
+            <h2>
+              Trafficking Index:
+            </h2>
+              <p>
+                78
+              </p>
+            <h2>
+              Handguns Sent to New York:
+            </h2>
+              <p>
+                2,392
+              </p>
+            <p>
+              In the Commonwealth of Pennsylvania , there is no requirement in state law to obtain a permit before purchasing any kind of firearm. While the state does require background checks through the state police for sale of handguns by private sellers, this requirement does not extend to long guns including certain shotguns and rifles.
+            </p>
+
+          <h1>
+            Virginia
+          </h1>
+            <h2>
+              Total Guns to New York:
+            </h2>
+              <p>
+                3,249
+              </p>
+            <h2>
+              Percentage of Trafficked Guns to New York:
+            </h2>
+              <p>
+                15%
+              </p>
+            <h2>
+              Trafficking Index:
+            </h2>
+              <p>
+                79
+              </p>
+            <h2>
+              Handguns Sent to New York:
+            </h2>
+              <p>
+                3,123
+              </p>
+            <p>
+              Virginia does not require gun buyers or owners to obtain a permit. The state tracks federal policy for background checks, requiring licensed dealers to submit applicants’ information to a state police agency before finalizing the sale. But private sellers are exempt from conducting a background check of purchasers.
+            </p>
+
+          <h1>
+            North Carolina
+          </h1>
+            <h2>
+              Total Guns to New York:
+            </h2>
+              <p>
+                2,453
+              </p>
+            <h2>
+              Percentage of Trafficked Guns to New York:
+            </h2>
+              <p>
+                9%
+              </p>
+            <h2>
+              Trafficking Index:
+            </h2>
+              <p>
+                79
+              </p>
+            <h2>
+              Handguns Sent to New York:
+            </h2>
+              <p>
+                2,230
+              </p>
+            <p>
+              North Carolina law requires handgun purchasers to first obtain a permit from the sheriff of the county in which the purchaser resides. Sheriffs conducting background checks for issuance of a permit must confirm that it is not a violation of state or federal law for the purchaser to buy the gun, though they are prohibited by state law from examining applicants’ criminal history more than five years before the date of the application. Unlicensed private sellers are not required to run a background check through the FBI for all long gun sales.
+            </p>
+
+          <h1>
+            South Carolina
+          </h1>
+            <h2>
+              Total Guns to New York:
+            </h2>
+              <p>
+                2,208
+              </p>
+            <h2>
+              Percentage of Trafficked Guns to New York:
+            </h2>
+              <p>
+                11%
+              </p>
+            <h2>
+              Trafficking Index:
+            </h2>
+              <p>
+                79
+              </p>
+            <h2>
+              Handguns Sent to New York:
+            </h2>
+              <p>
+                2,136
+              </p>
+            <p>
+              South Carolina has no permitting requirements for the purchase of handguns or long guns. Private sellers in South Carolina are not required to administer background checks, and licensed gun dealers are subject only to the federal requirements. Purchasers with South Carolina-issued concealed carry permits are not obligated to undergo a background check before purchase, thought they must at the time apply for the permit.
+            </p>
+
+          <h1>
+            Georgia
+          </h1>
+            <h2>
+              Total Guns to New York:
+            </h2>
+              <p>
+                2,822
+              </p>
+            <h2>
+              Percentage of Trafficked Guns to New York:
+            </h2>
+              <p>
+                13%
+              </p>
+            <h2>
+              Trafficking Index:
+            </h2>
+              <p>
+                80
+              </p>
+            <h2>
+              Handguns Sent to New York:
+            </h2>
+              <p>
+                2,711
+              </p>
+            <p>
+              Private sellers in Georgia are not required to perform background checks, and licensed gun dealers are subject only to the federal requirements. Purchasers with Georgia-issued concealed permits are not obligated to undergo a background check before purchase. The state does not require individuals to obtain a permit to purchase or possess a firearm.
+            </p>
+
+          <h1>
+            Florida
+          </h1>
+            <h2>
+              Total Guns to New York:
+            </h2>
+              <p>
+                3,209
+              </p>
+            <h2>
+              Percentage of Trafficked Guns to New York:
+            </h2>
+              <p>
+                8%
+              </p>
+            <h2>
+              Trafficking Index:
+            </h2>
+              <p>
+                75
+              </p>
+            <h2>
+              Handguns Sent to New York:
+            </h2>
+              <p>
+                3,019
+              </p>
+            <p>
+              Florida does not require individuals to obtain a permit to purchase or possess a firearm and private sellers are not required to conduct background checks on sale. It is a "point of contact" state, meaning that federally licensed dealers must contact state law enforcement to conduct federally-mandated background checks on sale. Though purchasers who have a state carry license are exempt from state background checks on purchase, they are not exempt from a required background check by the FBI.
+            </p>
+
+          <h1>
+            Ohio
+          </h1>
+            <h2>
+              Total Guns to New York:
+            </h2>
+              <p>
+                1,577
+              </p>
+            <h2>
+              Percentage of Trafficked Guns to New York:
+            </h2>
+              <p>
+                5%
+              </p>
+            <h2>
+              Trafficking Index:
+            </h2>
+              <p>
+                77
+              </p>
+            <h2>
+              Handguns Sent to New York:
+            </h2>
+              <p>
+                1,442
+              </p>
+            <p>
+              Ohio has no background check provisions beyond that required by federal law. State law contains no permit requirements for handguns or long guns. Purchasers who have obtained a state concealed carry license are exempt from undergoing a background check as a matter of federal law, but are nevertheless subject to a federal NICS background check by their local sheriff as part of the concealed carry application process.
+            </p>
+        </noscript>
+      <script src='js/TTC_bar_nvd3.js'></script>
+        <noscript>
+          <h1>
+            Time-to-Crime:
+          </h1>
+          <p>
+            The table below shows all New York crime gun recoveries with a known date of purchase. The most frequent age of crime guns in New York is less-than-one year.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  Number of Years between Purchase and Recovery
+                </th>
+                <th>
+                  Count of Guns Recovered
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>&lt; 1</td>
+                <td>1835</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>1601</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>1496</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>1321</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>1233</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>1008</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>951</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>950</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>849</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>808</td>
+              </tr>
+              <tr>
+              <td>10</td>
+              <td>808</td>
+              </tr>
+              <tr>
+              <td>11</td>
+              <td>751</td>
+              </tr>
+              <tr>
+              <td>12</td>
+              <td>776</td>
+              </tr>
+              <tr>
+              <td>13</td>
+              <td>744</td>
+              </tr>
+              <tr>
+              <td>14</td>
+              <td>787</td>
+              </tr>
+              <tr>
+              <td>15</td>
+              <td>766</td>
+              </tr>
+              <tr>
+              <td>16</td>
+              <td>791</td>
+              </tr>
+              <tr>
+              <td>17</td>
+              <td>770</td>
+              </tr>
+              <tr>
+              <td>18</td>
+              <td>831</td>
+              </tr>
+              <tr>
+              <td>19</td>
+              <td>799</td>
+              </tr>
+              <tr>
+              <td>20</td>
+              <td>757</td>
+              </tr>
+              <tr>
+              <td>21</td>
+              <td>741</td>
+              </tr>
+              <tr>
+              <td>22</td>
+              <td>656</td>
+              </tr>
+              <tr>
+              <td>23</td>
+              <td>581</td>
+              </tr>
+              <tr>
+              <td>24</td>
+              <td>514</td>
+              </tr>
+              <tr>
+              <td>25</td>
+              <td>493</td>
+              </tr>
+              <tr>
+              <td>26</td>
+              <td>423</td>
+              </tr>
+              <tr>
+              <td>27</td>
+              <td>433</td>
+              </tr>
+              <tr>
+              <td>28</td>
+              <td>404</td>
+              </tr>
+              <tr>
+              <td>29</td>
+              <td>366</td>
+              </tr>
+              <tr>
+              <td>30</td>
+              <td>399</td>
+              </tr>
+              <tr>
+                <td>31</td>
+                <td>332</td>
+              </tr>
+              <tr>
+                <td>32</td>
+                <td>339</td>
+              </tr>
+              <tr>
+                <td>33</td>
+                <td>321</td>
+              </tr>
+              <tr>
+                <td>34</td>
+                <td>243</td>
+              </tr>
+              <tr>
+                <td>35</td>
+                <td>243</td>
+              </tr>
+              <tr>
+                <td>36</td>
+                <td>248</td>
+              </tr>
+              <tr>
+                <td>37</td>
+                <td>258</td>
+              </tr>
+              <tr>
+                <td>38</td>
+                <td>253</td>
+              </tr>
+              <tr>
+                <td>39</td>
+                <td>264</td>
+              </tr>
+              <tr>
+                <td>40</td>
+                <td>215</td>
+              </tr>
+              <tr>
+                <td>41</td>
+                <td>189</td>
+              </tr>
+              <tr>
+                <td>42</td>
+                <td>139</td>
+              </tr>
+              <tr>
+                <td>43</td>
+                <td>103</td>
+              </tr>
+              <tr>
+                <td>44</td>
+                <td>57</td>
+              </tr>
+              <tr>
+                <td>45</td>
+                <td>36</td>
+              </tr>
+              <tr>
+                <td>46</td>
+                <td>21</td>
+              </tr>
+              <tr>
+                <td>47</td>
+                <td>14</td>
+              </tr>
+              <tr>
+                <td>48</td>
+                <td>13</td>
+              </tr>
+              <tr>
+                <td>49</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>50</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td>51</td>
+                <td>7</td>
+              </tr>
+              <tr>
+                <td>52</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>53</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>54</td>
+                <td>9</td>
+              </tr>
+              <tr>
+                <td>55</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>56</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>57</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>58</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>59</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>60</td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+        </noscript>
+      <script type="text/javascript">
+        //via http://stackoverflow.com/questions/7717527/smooth-scrolling-when-clicking-an-anchor-link
+          var $root = $('html, body');
+          $('a').click(function() {
+              var href = $.attr(this, 'href');
+              if (href.includes('part')) {
+                $root.animate({
+                    scrollTop: $(href).offset().top-40
+                }, 500, function () {
+                    window.location.hash = href;
+                });
+                return false;
+              }
+              else {
+                $root.animate({
+                    scrollTop: $(href).offset().top-100
+                }, 0, function () {
+                    window.location.hash = href;
+                });
+                return false;
+              }
+          });
+      </script>
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-33973995-5', 'auto');
+        ga('require', 'linkid');
+        ga('require', 'eventTracker');
+        ga('require', 'outboundLinkTracker');
+        ga('require', 'urlChangeTracker');
+        ga('send', 'pageview');
+      </script>
+      <script async src='js/autotrack.js'></script>
+
+  </body>
+</html>
