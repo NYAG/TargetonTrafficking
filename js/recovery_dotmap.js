@@ -57,7 +57,7 @@ var market_stats = {
 
 /* =================== DATA ==================== */
 
- d3.csv("data/Lacey Data/2. Recoveries for Dot Map-small.csv", function(error, data){
+ d3.csv("data/2. Recoveries for Dot Map-small.csv", function(error, data){
     if (error) throw error;
     d3.json('data/albers_us.json', function(error, us) {
           if (error) throw error;

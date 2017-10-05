@@ -1,0 +1,9 @@
+Market,FIPS,In_State,Out_of_State,In_stateGPV,Out_of_StateGPV,In_StateGPVHandgun,Out_of_StateGPVHandgun
+NYS,36,-26,74,-33,67,-8,92
+NYC,36061,-13,87,-9,91,-6,94
+Long Island,36059,-27,73,-42,58,-12,88
+Hudson Valley,36119,-30,70,-47,53,-25,75
+Albany,36001,-33,67,-48,52,-19,81
+Syracuse,36067,-40,60,-62,38,-30,70
+Buffalo,36029,-42,58,-56,44,-26,74
+Rochester,36055,-56,44,-78,22,-57,43
